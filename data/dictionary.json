@@ -1,0 +1,790 @@
+{
+  "A": [
+    {
+      "clue": "A sensor that measures acceleration forces, commonly used in mobile devices to detect orientation or motion",
+      "answer": "accelerometer"
+    },
+    {
+      "clue": "A networking hardware device that allows wireless-capable devices to connect to a wired network",
+      "answer": "access-point"
+    },
+    {
+      "clue": "The design of products, environments, and services to be accessible to people with disabilities, including compatibility with assistive technologies",
+      "answer": "accessibility"
+    },
+    {
+      "clue": "A now-deprecated Microsoft software framework based on COM/OLE, used for embedding content like videos or calendars in applications",
+      "answer": "activex"
+    },
+    {
+      "clue": "A unique reference to a specific location in memory used by software and hardware",
+      "answer": "address"
+    },
+    {
+      "clue": "A procedure used for solving a problem or performing a computation, consisting of a finite sequence of well\u2011defined instructions",
+      "answer": "algorithm"
+    },
+    {
+      "clue": "An alternate name or label that refers to another identifier in computing, often used for shortcuts or simplification",
+      "answer": "alias"
+    },
+    {
+      "clue": "A type of computer that uses continuously varying physical phenomena (like voltages or mechanical motion) to model problems",
+      "answer": "analog-computer"
+    },
+    {
+      "clue": "A mobile operating system developed by Google, primarily for touchscreen devices",
+      "answer": "android"
+    },
+    {
+      "clue": "A set of rules and specifications that allows one software application to interact with another",
+      "answer": "api"
+    },
+    {
+      "clue": "A software program, especially on mobile devices, that performs a specific task for a user",
+      "answer": "app"
+    },
+    {
+      "clue": "Software designed to perform specific functions directly for an end user, like word processors or media players",
+      "answer": "application-software"
+    },
+    {
+      "clue": "A file or collection of files stored together, often compressed, for backup or transport",
+      "answer": "archive"
+    },
+    {
+      "clue": "A data structure consisting of a collection of elements, each identified by an index or key, stored in contiguous memory",
+      "answer": "array"
+    },
+    {
+      "clue": "The field of computing focused on creating systems that simulate human intelligence, including learning and problem\u2011solving",
+      "answer": "artificial-intelligence"
+    },
+    {
+      "clue": "A motherboard and power-supply form factor specification introduced by Intel in 1995 for standardized PC design",
+      "answer": "atx"
+    }
+  ],
+  "B": [
+    {
+      "clue": "A copy of computer data stored elsewhere to restore the original after data loss or corruption",
+      "answer": "backup"
+    },
+    {
+      "clue": "The maximum rate of data transfer across a network connection, typically measured in bits per second",
+      "answer": "bandwidth"
+    },
+    {
+      "clue": "A numbering system using only two digits, 0 and 1, fundamental to all digital computing",
+      "answer": "binary"
+    },
+    {
+      "clue": "The smallest unit of data in computing, representing a single binary value (0 or 1)",
+      "answer": "bit"
+    },
+    {
+      "clue": "A map of bits that defines a digital image, where each pixel\u2019s color is stored as binary data",
+      "answer": "bitmap"
+    },
+    {
+      "clue": "A decentralized ledger of blocks linked using cryptography, often used to record transactions securely",
+      "answer": "blockchain"
+    },
+    {
+      "clue": "A frequently updated website displaying posts in reverse chronological order, often for commentary or news",
+      "answer": "blog"
+    },
+    {
+      "clue": "A wireless technology standard for short-range data exchange between devices using radio signals",
+      "answer": "bluetooth"
+    },
+    {
+      "clue": "The process of loading an operating system into a computer\u2019s memory upon startup or restart",
+      "answer": "boot"
+    },
+    {
+      "clue": "A high-speed always-on internet connection using multiple channels to transmit data simultaneously",
+      "answer": "broadband"
+    },
+    {
+      "clue": "A software application used to access and navigate websites on the internet",
+      "answer": "browser"
+    },
+    {
+      "clue": "An error, flaw or fault in software or hardware that causes it to produce incorrect or unexpected results",
+      "answer": "bug"
+    },
+    {
+      "clue": "A communication system within a computer that transfers data between components like CPU and memory",
+      "answer": "bus"
+    },
+    {
+      "clue": "A unit of digital information consisting of 8 bits, capable of encoding 256 values",
+      "answer": "byte"
+    }
+  ],
+  "C": [
+    {
+      "clue": "Hardware or software component that temporarily stores data so future requests for that data can be served faster",
+      "answer": "cache"
+    },
+    {
+      "clue": "A toggle key on keyboards that, when activated, causes letters to be typed in uppercase until pressed again",
+      "answer": "caps-lock"
+    },
+    {
+      "clue": "A challenge\u2013response test used to determine whether the user is human, helping prevent automated bots",
+      "answer": "captcha"
+    },
+    {
+      "clue": "Software that accesses services provided by a server over a network",
+      "answer": "client"
+    },
+    {
+      "clue": "A temporary storage area in memory used to hold data that has been copied or cut, allowing it to be pasted elsewhere",
+      "answer": "clipboard"
+    },
+    {
+      "clue": "Delivery of computing services\u2014like servers, storage, and software\u2014over the internet on a pay-as-you-go basis",
+      "answer": "cloud-computing"
+    },
+    {
+      "clue": "An instruction entered by a user to direct a computer or software program to perform a specific task",
+      "answer": "command"
+    },
+    {
+      "clue": "The act of running source code through a compiler to produce executable or machine code",
+      "answer": "compile"
+    },
+    {
+      "clue": "A program that translates high\u2011level source code into low\u2011level machine code, bytecode, or another language",
+      "answer": "compiler"
+    },
+    {
+      "clue": "Process of reducing the size of data for storage or transmission by encoding it more efficiently",
+      "answer": "compression"
+    },
+    {
+      "clue": "An electronic machine designed to process data according to a set of instructions, capable of running software",
+      "answer": "computer"
+    },
+    {
+      "clue": "A small piece of data sent by a website to a browser to remember information about a user's session",
+      "answer": "cookie"
+    },
+    {
+      "clue": "Practice of protecting systems, networks, and programs from digital attacks",
+      "answer": "cybersecurity"
+    },
+    {
+      "clue": "Illegal activity involving computers or networks, such as hacking, identity theft, or distributing malware",
+      "answer": "cyber\u2011crime"
+    }
+  ],
+  "D": [
+    {
+      "clue": "A background process that runs independently of user control, often providing services to other programs",
+      "answer": "daemon"
+    },
+    {
+      "clue": "A graphical interface in computing that provides at-a-glance views of key metrics and data in one place",
+      "answer": "dashboard"
+    },
+    {
+      "clue": "Raw facts or symbols that computers can process, like numbers, text, or observations",
+      "answer": "data"
+    },
+    {
+      "clue": "The process of analyzing large datasets to identify patterns and extract useful insights",
+      "answer": "data-mining"
+    },
+    {
+      "clue": "An organized collection of structured information stored electronically, managed via a DBMS",
+      "answer": "database"
+    },
+    {
+      "clue": "The systematic process of detecting, isolating, and fixing errors in software",
+      "answer": "debug"
+    },
+    {
+      "clue": "To restore a compressed file or data back to its original size or form",
+      "answer": "decompress"
+    },
+    {
+      "clue": "To remove data from a storage medium or file system",
+      "answer": "delete"
+    },
+    {
+      "clue": "A personal computer designed for individual use, featuring a graphical desktop interface",
+      "answer": "desktop"
+    },
+    {
+      "clue": "Any data represented in discrete, binary form (0 and 1) rather than continuous analog signals",
+      "answer": "digital"
+    },
+    {
+      "clue": "A storage medium where data is written magnetically on spinning platters",
+      "answer": "disk"
+    },
+    {
+      "clue": "A hierarchical system translating human-readable domain names into IP addresses",
+      "answer": "dns"
+    },
+    {
+      "clue": "A platform that uses OS-level virtualization to deliver software in containers",
+      "answer": "docker"
+    },
+    {
+      "clue": "A digital file that contains text, images, or other data, created for viewing or printing",
+      "answer": "document"
+    },
+    {
+      "clue": "The process of receiving files from a remote system to your device",
+      "answer": "download"
+    },
+    {
+      "clue": "Software that enables an operating system to communicate with hardware devices",
+      "answer": "driver"
+    },
+    {
+      "clue": "Digital rights management: technology used to control access to copyrighted digital content",
+      "answer": "drm"
+    },
+    {
+      "clue": "Digital Subscriber Line: a broadband communications technology using telephone lines",
+      "answer": "dsl"
+    }
+  ],
+  "E": [
+    {
+      "clue": "A method of exchanging digital messages between people via computer networks",
+      "answer": "email"
+    },
+    {
+      "clue": "A small digital pictogram used in electronic communication to convey expression or ideas",
+      "answer": "emoji"
+    },
+    {
+      "clue": "Software or hardware that imitates another computer system so programs designed for it can run",
+      "answer": "emulator"
+    },
+    {
+      "clue": "The process of transforming information into a coded form so only authorized parties can access it",
+      "answer": "encryption"
+    },
+    {
+      "clue": "Enterprise Resource Planning: integrated software for managing core business processes across departments",
+      "answer": "erp"
+    },
+    {
+      "clue": "A widely used wired networking technology for connecting devices in LANs",
+      "answer": "ethernet"
+    },
+    {
+      "clue": "A unit of digital information equal to one quintillion bytes (10\u00b9\u2078 bytes)",
+      "answer": "exabyte"
+    },
+    {
+      "clue": "A file containing machine code that can be directly run by a computer\u2019s operating system",
+      "answer": "executable"
+    }
+  ],
+  "F": [
+    {
+      "clue": "Frequently Asked Questions: a list of common questions and answers on a specific topic",
+      "answer": "faq"
+    },
+    {
+      "clue": "A named collection of data stored on a computer system, such as a document, image, or program",
+      "answer": "file"
+    },
+    {
+      "clue": "A network security system that monitors and controls incoming and outgoing network traffic based on rules",
+      "answer": "firewall"
+    },
+    {
+      "clue": "Permanent software programmed into a hardware device\u2019s read-only memory, controlling its basic functions",
+      "answer": "firmware"
+    },
+    {
+      "clue": "A magnetic storage medium that uses rotating disks to hold digital data, popular before USB drives",
+      "answer": "floppy-disk"
+    },
+    {
+      "clue": "A reusable set of libraries or tools that provides structure and common functionality to build software applications",
+      "answer": "framework"
+    },
+    {
+      "clue": "Software that is provided to users free of charge, often with limited features or without source code",
+      "answer": "freeware"
+    },
+    {
+      "clue": "File Transfer Protocol: a standard network protocol used to transfer files between client and server",
+      "answer": "ftp"
+    }
+  ],
+  "G": [
+    {
+      "clue": "Graphics Interchange Format: a bitmap image format that supports animation and transparency",
+      "answer": "gif"
+    },
+    {
+      "clue": "A unit of digital information equal to one billion bytes (10\u2079 bytes)",
+      "answer": "gigabyte"
+    },
+    {
+      "clue": "A distributed version control system commonly used for tracking changes in source code during development",
+      "answer": "git"
+    },
+    {
+      "clue": "Global Positioning System: a satellite-based navigation system providing location and time information",
+      "answer": "gps"
+    },
+    {
+      "clue": "Visual elements on a screen such as images, shapes, and text used to present information or create interfaces",
+      "answer": "graphics"
+    },
+    {
+      "clue": "Graphical User Interface: a type of interface that allows users to interact with software visually using icons and windows",
+      "answer": "gui"
+    }
+  ],
+  "H": [
+    {
+      "clue": "To gain unauthorized access to computer systems or networks, often by exploiting vulnerabilities",
+      "answer": "hack"
+    },
+    {
+      "clue": "A person skilled in computing and networking who may use this knowledge to solve problems or exploit systems",
+      "answer": "hacker"
+    },
+    {
+      "clue": "The physical components of a computer system like CPU, RAM, motherboard, and peripherals",
+      "answer": "hardware"
+    },
+    {
+      "clue": "A high-definition interface standard for transmitting uncompressed video and audio between devices",
+      "answer": "hdmi"
+    },
+    {
+      "clue": "The standard markup language for creating and structuring web pages",
+      "answer": "html"
+    },
+    {
+      "clue": "A link in a document or on a web page that leads to another location when clicked",
+      "answer": "hyperlink"
+    },
+    {
+      "clue": "Text displayed on a web page that contains clickable links, forming a non-linear structure",
+      "answer": "hypertext"
+    }
+  ],
+  "I": [
+    {
+      "clue": "A small image or symbol used in user interfaces to represent actions, files, or programs",
+      "answer": "icon"
+    },
+    {
+      "clue": "Institute of Electrical and Electronics Engineers: a global association that sets technical standards",
+      "answer": "ieee"
+    },
+    {
+      "clue": "A whole number (no fractions) that can be positive, negative, or zero",
+      "answer": "integer"
+    },
+    {
+      "clue": "A shared boundary between two systems or components that enables them to communicate",
+      "answer": "interface"
+    },
+    {
+      "clue": "The global network that connects computers and devices worldwide using standard protocols",
+      "answer": "internet"
+    },
+    {
+      "clue": "Apple\u2019s mobile operating system designed for iPhone, iPad, and iPod Touch devices",
+      "answer": "ios"
+    },
+    {
+      "clue": "A unique numerical label assigned to each device connected to a computer network that uses the Internet Protocol",
+      "answer": "ip-address"
+    },
+    {
+      "clue": "The act of repeating a sequence of instructions or steps in a program, typically using loops",
+      "answer": "iteration"
+    }
+  ],
+  "J": [
+    {
+      "clue": "A widely used, platform-independent programming language known for its portability",
+      "answer": "java"
+    },
+    {
+      "clue": "A scripting language primarily used to create and manage dynamic content on websites",
+      "answer": "javascript"
+    },
+    {
+      "clue": "A handheld input device used to control movement in games and simulations",
+      "answer": "joystick"
+    },
+    {
+      "clue": "A commonly used image format that compresses photographic content efficiently",
+      "answer": "jpeg"
+    },
+    {
+      "clue": "Unwanted, unsolicited email messages sent in bulk, often for advertising or phishing",
+      "answer": "junk-mail"
+    }
+  ],
+  "K": [
+    {
+      "clue": "The central core of an operating system that controls hardware, manages processes, memory, and facilitates communication between software and devices",
+      "answer": "kernel"
+    },
+    {
+      "clue": "A physical or virtual key used to encrypt/decrypt data or unlock functionality",
+      "answer": "key"
+    },
+    {
+      "clue": "The set of keys with letters, numbers, and symbols used to input data into a computer",
+      "answer": "keyboard"
+    },
+    {
+      "clue": "A significant word or phrase used to categorize or trigger a function in programming or search",
+      "answer": "keyword"
+    }
+  ],
+  "L": [
+    {
+      "clue": "Local Area Network: a network connecting devices within a limited area like a home or office",
+      "answer": "lan"
+    },
+    {
+      "clue": "A portable personal computer with integrated screen, keyboard, and battery",
+      "answer": "laptop"
+    },
+    {
+      "clue": "A printer that uses a laser and electrically charged toner to produce high-quality text and graphics",
+      "answer": "laser-printer"
+    },
+    {
+      "clue": "A reference or pointer, usually clickable, that connects one document or location to another",
+      "answer": "link"
+    },
+    {
+      "clue": "An open-source Unix-like operating system kernel created by Linus Torvalds and community contributors",
+      "answer": "linux"
+    },
+    {
+      "clue": "The use of reasoning principles to perform computation or solve problems in software",
+      "answer": "logic"
+    },
+    {
+      "clue": "A wireless communication standard for high-speed data over mobile networks",
+      "answer": "lte"
+    }
+  ],
+  "M": [
+    {
+      "clue": "A family of personal computers designed and sold by Apple in the 1980s and '90s",
+      "answer": "macintosh"
+    },
+    {
+      "clue": "A set of instructions that automate tasks in programs like spreadsheets or Word macros",
+      "answer": "macro"
+    },
+    {
+      "clue": "A large, powerful computer used primarily by large organizations for bulk data processing",
+      "answer": "mainframe"
+    },
+    {
+      "clue": "Malicious software designed to harm or exploit computer systems",
+      "answer": "malware"
+    },
+    {
+      "clue": "The physical hardware in a computer used to store data temporarily or permanently, like RAM or hard drives",
+      "answer": "memory"
+    },
+    {
+      "clue": "A device that modulates and demodulates signals for data transmission over telephone or cable lines",
+      "answer": "modem"
+    },
+    {
+      "clue": "An output device that displays visual information on a screen, like text, images, or video",
+      "answer": "monitor"
+    },
+    {
+      "clue": "The main printed circuit board in a computer which houses the CPU, memory, and important connectors",
+      "answer": "motherboard"
+    },
+    {
+      "clue": "A standard for encoding video and audio, commonly used for DVDs and online streaming",
+      "answer": "mpeg"
+    },
+    {
+      "clue": "The combination of text, images, video, and audio in a single presentation or application",
+      "answer": "multimedia"
+    }
+  ],
+  "N": [
+    {
+      "clue": "A network of interconnected devices that share data and resources",
+      "answer": "network"
+    },
+    {
+      "clue": "A single computing device or system connected to a network",
+      "answer": "node"
+    },
+    {
+      "clue": "A portable computer similar to a laptop but even more compact",
+      "answer": "notebook"
+    }
+  ],
+  "O": [
+    {
+      "clue": "Optical Character Recognition: technology that converts different types of documents into editable and searchable data",
+      "answer": "ocr"
+    },
+    {
+      "clue": "Software whose source code is available for anyone to view, modify, and distribute",
+      "answer": "open-source"
+    },
+    {
+      "clue": "A selectable choice in a program or menu that enables users to customize actions or features",
+      "answer": "option"
+    },
+    {
+      "clue": "The result produced by a computer program after processing input data",
+      "answer": "output"
+    }
+  ],
+  "P": [
+    {
+      "clue": "A secret string of characters used to authenticate a user and authorize access to systems or data",
+      "answer": "password"
+    },
+    {
+      "clue": "To insert previously copied or cut content from the clipboard into a document or field",
+      "answer": "paste"
+    },
+    {
+      "clue": "A type of cyber attack that uses deceptive communications to trick people into revealing sensitive information",
+      "answer": "phishing"
+    },
+    {
+      "clue": "A base set of technologies or tools on which applications are built and run, like mobile or cloud platforms",
+      "answer": "platform"
+    },
+    {
+      "clue": "A software component that adds specific capabilities or features to an existing application",
+      "answer": "plug-in"
+    },
+    {
+      "clue": "A website or gateway that provides access to a variety of services or information in one place",
+      "answer": "portal"
+    },
+    {
+      "clue": "The central unit in a computer that executes instructions and processes data",
+      "answer": "processor"
+    },
+    {
+      "clue": "Defined rules and formats that enable two or more devices or programs to communicate",
+      "answer": "protocol"
+    },
+    {
+      "clue": "A high-level, interpreted programming language known for its ease of use and readability",
+      "answer": "python"
+    }
+  ],
+  "Q": [
+    {
+      "clue": "A two-dimensional barcode that stores information which can be scanned by devices like smartphones",
+      "answer": "qr-code"
+    },
+    {
+      "clue": "Computing that uses quantum-mechanical phenomena like superposition and entanglement to perform operations",
+      "answer": "quantum-computing"
+    },
+    {
+      "clue": "A data structure in which elements wait in line for processing, following First-In-First-Out order",
+      "answer": "queue"
+    },
+    {
+      "clue": "The standard keyboard layout for Latin alphabet typewriters and PCs, named from its first six letters",
+      "answer": "qwerty"
+    }
+  ],
+  "R": [
+    {
+      "clue": "Volatile memory that can be accessed randomly and is used by the CPU to store temporary data",
+      "answer": "ram"
+    },
+    {
+      "clue": "The process of restarting a computer by shutting down and starting it again",
+      "answer": "reboot"
+    },
+    {
+      "clue": "A system database in Windows that stores low-level settings for the OS and installed applications",
+      "answer": "registry"
+    },
+    {
+      "clue": "Accessing a computer or network from a remote location, often over the internet",
+      "answer": "remote-access"
+    },
+    {
+      "clue": "Read-Only Memory: non-volatile memory containing essential system firmware or BIOS",
+      "answer": "rom"
+    },
+    {
+      "clue": "Gaining privileged control of a device, often by exploiting security vulnerabilities",
+      "answer": "rooting"
+    }
+  ],
+  "S": [
+    {
+      "clue": "A special startup mode where only essential system components are loaded to diagnose issues",
+      "answer": "safe-mode"
+    },
+    {
+      "clue": "A computer or program that provides services or resources to other computers, known as clients",
+      "answer": "server"
+    },
+    {
+      "clue": "Computer programs that perform specific tasks on a device, as opposed to hardware or firmware",
+      "answer": "software"
+    },
+    {
+      "clue": "Unsolicited and often unwanted email, typically sent in bulk for advertising or malicious purposes",
+      "answer": "spam"
+    },
+    {
+      "clue": "Structured Query Language: a standard programming language for managing and querying relational databases",
+      "answer": "sql"
+    },
+    {
+      "clue": "Solid-State Drive: a storage device that uses flash memory and has no moving parts",
+      "answer": "ssd"
+    },
+    {
+      "clue": "Service Set Identifier: the name assigned to a Wi\u2011Fi network to uniquely identify it",
+      "answer": "ssid"
+    },
+    {
+      "clue": "Secure Sockets Layer: an encryption protocol that ensures privacy and integrity of data transmitted over networks",
+      "answer": "ssl"
+    },
+    {
+      "clue": "Scalable Vector Graphics: an XML-based format for two-dimensional vector images",
+      "answer": "svg"
+    }
+  ],
+  "T": [
+    {
+      "clue": "A predefined file used as a starting point for creating new documents, designs, or code",
+      "answer": "template"
+    },
+    {
+      "clue": "A sequence of instructions within a process that can be scheduled independently by the OS",
+      "answer": "thread"
+    },
+    {
+      "clue": "The creation and management of threads within a process to allow parallel execution",
+      "answer": "threading"
+    },
+    {
+      "clue": "Temporary storage for deleted files, allowing recovery before permanent removal",
+      "answer": "trash"
+    }
+  ],
+  "U": [
+    {
+      "clue": "Running a processor at a clock speed lower than its default to reduce heat or power use",
+      "answer": "underclock"
+    },
+    {
+      "clue": "A family of multitasking, multi-user operating systems originating from AT&T\u2019s original in 1969",
+      "answer": "unix"
+    },
+    {
+      "clue": "Uniform Resource Locator: the web address used to locate and access resources on the Internet",
+      "answer": "url"
+    },
+    {
+      "clue": "Universal Serial Bus: a standard interface for data and power between computers and peripherals",
+      "answer": "usb"
+    }
+  ],
+  "V": [
+    {
+      "clue": "Computer graphics composed of geometric shapes\u2014points, lines, and curves\u2014that can scale without loss",
+      "answer": "vector-graphics"
+    },
+    {
+      "clue": "Video Graphics Array: a legacy display standard introduced by IBM in 1987",
+      "answer": "vga"
+    },
+    {
+      "clue": "Real-time audio and video communications between remote participants (video calls/conferencing)",
+      "answer": "video-telephony"
+    },
+    {
+      "clue": "Malicious software that replicates by modifying other programs and spreading to other systems",
+      "answer": "virus"
+    },
+    {
+      "clue": "Voice over Internet Protocol: technology for delivering voice communications via IP networks",
+      "answer": "voip"
+    }
+  ],
+  "W": [
+    {
+      "clue": "Wide Area Network: a telecommunications network that spans a broad geographic area",
+      "answer": "wan"
+    },
+    {
+      "clue": "A single document or page on the web that is part of a broader website",
+      "answer": "webpage"
+    },
+    {
+      "clue": "A collection of related web pages, typically under a single domain, accessible via the Internet",
+      "answer": "website"
+    },
+    {
+      "clue": "A collaborative online encyclopedia that can be edited by its users",
+      "answer": "wiki"
+    },
+    {
+      "clue": "A Microsoft operating system featuring a graphical user interface and broad application support",
+      "answer": "windows"
+    },
+    {
+      "clue": "A wireless networking technology based on IEEE 802.11 enabling devices to connect without cables",
+      "answer": "wi\u2011fi"
+    },
+    {
+      "clue": "The global system of interlinked hypertext documents accessed via the Internet",
+      "answer": "world-wide-web"
+    }
+  ],
+  "X": [
+    {
+      "clue": "eXtensible Markup Language: a flexible format for creating structured data representations",
+      "answer": "xml"
+    }
+  ],
+  "Y": [
+    {
+      "clue": "A video platform where users can upload, share, and view videos",
+      "answer": "youtube"
+    }
+  ],
+  "Z": [
+    {
+      "clue": "An exploit that takes advantage of a software vulnerability before a patch is available",
+      "answer": "zero\u2011day"
+    },
+    {
+      "clue": "A compressed archive file format (e.g., .zip) used to bundle and compress multiple files",
+      "answer": "zip"
+    }
+  ]
+}
