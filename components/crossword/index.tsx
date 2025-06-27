@@ -509,118 +509,122 @@ export function Crossword(props: CrosswordTableProps) {
 
   return (
     <View>
-      {layout.table.map((row, rowIndex) => (
-        <View key={rowIndex} style={styles.row}>
-          {row.map((cell, cellIndex) => {
-            const starty = rowIndex + 1;
-            const startx = cellIndex + 1;
+      <View className='w-full flex justify-center items-center p-10 bg-slate-100'>
+        {layout.table.map((row, rowIndex) => (
+          <View key={rowIndex} style={styles.row}>
+            {row.map((cell, cellIndex) => {
+              const starty = rowIndex + 1;
+              const startx = cellIndex + 1;
 
-            const isBlankCell = cell === '-';
-            const positionKey = `${startx}-${starty}`;
-            const isCurrentGuessed = currentCorrectWordCells.has(positionKey);
-            const hasBeenGuessed = correctWordCells.current.has(positionKey);
-            const willHighlight = highlightedFields.has(positionKey);
+              const isBlankCell = cell === '-';
+              const positionKey = `${startx}-${starty}`;
+              const isCurrentGuessed = currentCorrectWordCells.has(positionKey);
+              const hasBeenGuessed = correctWordCells.current.has(positionKey);
+              const willHighlight = highlightedFields.has(positionKey);
 
-            const wordData = wordsData[positionKey];
-            const wordNumbers = wordData?.map(({ position }) => position);
+              const wordData = wordsData[positionKey];
+              const wordNumbers = wordData?.map(({ position }) => position);
 
-            if (!cellElevations[positionKey]) {
-              cellElevations[positionKey] = new Animated.Value(0);
-            }
+              if (!cellElevations[positionKey]) {
+                cellElevations[positionKey] = new Animated.Value(0);
+              }
 
-            return (
-              <View
-                key={`${rowIndex}-${cellIndex}`}
-                style={styles.cellContainer}
-              >
-                {/* Word Position */}
-                {wordNumbers !== undefined ?
-                <View style={styles.smallDigitContainer}>
-                  {wordNumbers.map(position => (
-                    <Text key={`word-position-${position}`} style={styles.smallDigit}>
-                      {position}
-                    </Text>
-                  ))}
-                </View>
-                : null}
-
-                {/* Cell */}
-                {!isBlankCell
-                ? (
-                <AnimatedView
-                  style={[
-                    currentIncorrectWordCells.has(positionKey) && incorrectAnswerStyle,
-                  ]}
-                >
-                  <GestureDetector gesture={gesture(positionKey, wordData)}>
-                    <AnimatedTextInput
-                      ref={(ref: any) => {
-                        if (ref) cellRefs.current[positionKey] = ref;
-                      }}
-                      style={[
-                        styles.cell,
-                        willHighlight && styles.highlightedCell,
-                        isCurrentGuessed && getElevatedStyle(positionKey),
-                        hasBeenGuessed && styles.correctCell,
-                      ]}
-                      editable={!hasBeenGuessed}
-                      value={positionGuess[positionKey]}
-                      onChange={onChangeText(positionKey)}
-                      onKeyPress={handleBackSpace(positionKey)}
-                    />
-                  </GestureDetector>
-                </AnimatedView>
-                )
-                : (
+              return (
                 <View
-                  style={[
-                    styles.cell,
-                    styles.staticCell
-                  ]}
-                />
-                )}
-              </View>
-            );
-          })}
-        </View>
-      ))}
-      {groupedWords?.across?.length && (
-        <View style={styles.questionsContainer}>
-          <View style={styles.headingContainer}>
-            <Text style={styles.headingText}>Across</Text>
-          </View>
-          {groupedWords.across.map((word) => (
-            <Text
-              key={word.position}
-              style={[
-                styles.questionText,
-                correctWordPositions.has(word.position) && styles.guessedQuestionText
-              ]}
-            >
-              {word.position}. {word.clue}
-            </Text>
-          ))}
-        </View>
-      )}
+                  key={`${rowIndex}-${cellIndex}`}
+                  style={styles.cellContainer}
+                >
+                  {/* Word Position */}
+                  {wordNumbers !== undefined ?
+                  <View style={styles.smallDigitContainer}>
+                    {wordNumbers.map(position => (
+                      <Text key={`word-position-${position}`} style={styles.smallDigit}>
+                        {position}
+                      </Text>
+                    ))}
+                  </View>
+                  : null}
 
-      {groupedWords?.down?.length && (
-        <View style={styles.questionsContainer}>
-          <View style={styles.headingContainer}>
-            <Text style={styles.headingText}>Down</Text>
+                  {/* Cell */}
+                  {!isBlankCell
+                  ? (
+                  <AnimatedView
+                    style={[
+                      currentIncorrectWordCells.has(positionKey) && incorrectAnswerStyle,
+                    ]}
+                  >
+                    <GestureDetector gesture={gesture(positionKey, wordData)}>
+                      <AnimatedTextInput
+                        ref={(ref: any) => {
+                          if (ref) cellRefs.current[positionKey] = ref;
+                        }}
+                        style={[
+                          styles.cell,
+                          willHighlight && styles.highlightedCell,
+                          isCurrentGuessed && getElevatedStyle(positionKey),
+                          hasBeenGuessed && styles.correctCell,
+                        ]}
+                        editable={!hasBeenGuessed}
+                        value={positionGuess[positionKey]}
+                        onChange={onChangeText(positionKey)}
+                        onKeyPress={handleBackSpace(positionKey)}
+                      />
+                    </GestureDetector>
+                  </AnimatedView>
+                  )
+                  : (
+                  <View
+                    style={[
+                      styles.cell,
+                      styles.staticCell
+                    ]}
+                  />
+                  )}
+                </View>
+              );
+            })}
           </View>
-          {groupedWords.down.map((word) => (
-            <Text
-              key={word.position}
-              style={[
-                styles.questionText,
-                correctWordPositions.has(word.position) && styles.guessedQuestionText
-              ]}
-            >
-              {word.position}. {word.clue}
-            </Text>
-          ))}
-        </View>
-      )}
+        ))}
+      </View>
+      <View className='p-3'>
+        {groupedWords?.across?.length && (
+          <View style={styles.questionsContainer}>
+            <View style={styles.headingContainer}>
+              <Text style={styles.headingText}>Across</Text>
+            </View>
+            {groupedWords.across.map((word) => (
+              <Text
+                key={word.position}
+                style={[
+                  styles.questionText,
+                  correctWordPositions.has(word.position) && styles.guessedQuestionText
+                ]}
+              >
+                {word.position}. {word.clue}
+              </Text>
+            ))}
+          </View>
+        )}
+
+        {groupedWords?.down?.length && (
+          <View style={styles.questionsContainer}>
+            <View style={styles.headingContainer}>
+              <Text style={styles.headingText}>Down</Text>
+            </View>
+            {groupedWords.down.map((word) => (
+              <Text
+                key={word.position}
+                style={[
+                  styles.questionText,
+                  correctWordPositions.has(word.position) && styles.guessedQuestionText
+                ]}
+              >
+                {word.position}. {word.clue}
+              </Text>
+            ))}
+          </View>
+        )}
+      </View>
     </View>
   );
 }
@@ -683,6 +687,7 @@ const styles = StyleSheet.create({
 	},
 	questionText: {
 		fontSize: 16,
+    color: 'rgba(0, 0, 0, 0.8)'
 	},
   guessedQuestionText: {
     textDecorationLine: 'line-through',
@@ -694,7 +699,7 @@ const styles = StyleSheet.create({
 	headingText: {
 		fontSize: 18,
 		fontWeight: 'bold',
-		color: '#f47c0b',
+		color: '#000',
 		textAlign: 'center',
 	},
 	buttonContainer: {

@@ -38,7 +38,6 @@
     "react-native": "0.79.4",
     "react-native-elevation": "^1.0.0",
     "react-native-gesture-handler": "~2.24.0",
-    "react-native-mmkv": "^2.12.2",
     "react-native-reanimated": "~3.17.5",
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "^4.10.0",
@@ -46,10 +45,12 @@
     "react-native-web": "~0.20.0",
     "tailwind-merge": "^2.2.1",
     "tailwindcss": "3.3.5",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "@react-native-async-storage/async-storage": "2.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
+    "@react-native-community/cli": "latest",
     "@types/lodash": "^4.17.19",
     "@types/react": "~19.0.14",
     "typescript": "^5.8.3"

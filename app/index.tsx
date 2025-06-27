@@ -4,11 +4,19 @@ import { useRouter } from 'expo-router';
 import { Button } from '~/components/ui/button';
 import { Text } from '~/components/ui/text';
 import { CrosswordState } from '~/lib/utils';
-import { useMemo } from 'react';
+import { GameState } from '~/types/crossword';
 
 export default function Screen() {
   const router = useRouter();
-  const existingGameState = useMemo(() => CrosswordState.loadState(), []);
+  const [existingGameState, setExistingGameState] = React.useState<GameState | null>(null);
+
+  React.useEffect(() => {
+    (async () => {
+      setExistingGameState(
+        await CrosswordState.loadState()
+      );
+    })();
+  }, []);
 
   return (
     <View className='flex-1 justify-center items-center gap-5 p-6 bg-secondary/30'>
@@ -16,7 +24,7 @@ export default function Screen() {
         <Button onPress={() => router.push('/dictionary')}>
           <Text>Dictionary</Text>
         </Button>
-        <Button>
+        <Button onPress={() => router.push('/crossword')}>
           <Text>New Game</Text>
         </Button>
         {existingGameState && (

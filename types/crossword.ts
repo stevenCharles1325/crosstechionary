@@ -24,7 +24,10 @@ export type CellDirection = { right?: string, down?: string, left?: string, up?:
 export type WordsGroup = { across: CrosswordResult[], down: CrosswordResult[] };
 
 export interface GameState {
+  id: number;
+  level: number;
   timeStart: Date;
+  guessingWords: Pick<CrosswordLayout['result'][number], 'clue' | 'answer'>[];
   mistakesCount: Number;
   correctWords: string[];
   filledCells: string[];
