@@ -1,16 +1,17 @@
-import { memo, Ref, RefObject, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { CrosswordLayout, GameState, WordsGroup } from "~/types/crossword";
 // @ts-ignore
 import { generateLayout } from 'crossword-layout-generator';
 import { intersectSets, positionOrientationLoop } from "~/lib/utils";
-import { View, StyleSheet, Animated, NativeSyntheticEvent, TextInputChangeEventData, TextInputKeyPressEventData, Easing, Text } from "react-native";
+import { View, StyleSheet, NativeSyntheticEvent, TextInputChangeEventData, TextInputKeyPressEventData, Text } from "react-native";
 import {
   Gesture,
   TextInput,
 } from 'react-native-gesture-handler';
 import Cycled from 'cycled';
-import { attempt, debounce, groupBy, isEmpty } from "lodash";
+import { groupBy, isEmpty, once } from "lodash";
 import { CrossWordCell } from "./crosswordCell";
+import { ScrollView } from 'react-native-gesture-handler';
 
 type GuessingWord = {
   oneTapWord: {
@@ -46,6 +47,34 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
   const wordsCellsRef = useRef<WordCells>({});
   const cellPointer = useRef<Cycled<string> | null>(null);
   const cellsRef = useRef<Record<string, TextInput>>({});
+
+  const consumeGameState = useRef(once((state: GameState) => {
+    if (state.correctWords?.length) {
+      const detectedCorrectCells = state.correctWords.flatMap((data) => {
+        const cellInputs: Record<string, string> = {};
+
+        for (let i = 1; i < data.word.length; i++) {
+          cellInputs[data.cells[i]] = data.word[i].toUpperCase();
+        }
+
+        setCellValue((prev) => ({
+          ...prev,
+          ...cellInputs,
+        }));
+
+        return data.cells;
+      });
+
+      setCorrectCells(new Set(detectedCorrectCells));
+    }
+
+    if (!isEmpty(state.cellsValue)) {
+      setCellValue((prev) => ({
+        ...prev,
+        ...state.cellsValue,
+      }));
+    }
+  }));
 
   const layout: CrosswordLayout = useMemo(() => 
     generateLayout(gameState.guessingWords)
@@ -207,7 +236,7 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
       const isAnswerCorrect = correctGuess === word.length;
       const newState = {
         ...gameState,
-        attempt: isAnswerCorrect ? state.attempts : state.attempts + 1,
+        attempts: isAnswerCorrect ? state.attempts : state.attempts + 1,
         mistakesCount: isAnswerCorrect 
           ? state.mistakesCount
           : state.mistakesCount + 1,
@@ -228,7 +257,7 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
 
   const onChangeText = useCallback((
     positionKey: string,
-  ) => async (
+  ) => (
     e: NativeSyntheticEvent<TextInputChangeEventData>
   ) => {
     if (!guessingWord.oneTapWord) return;
@@ -238,17 +267,17 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
     const text = e.nativeEvent.text;
 
     // Alpha characters only, and allow backspace
-    const isAlpha = /^[A-Za-z]+?$/.test(text);
+    const isAlpha = /^[A-Za-z-]+?$/.test(text);
     const isBackspace = !text.length;
 
     setCellValue((prev) => ({
       ...prev,
-      [positionKey]: isAlpha ? text[text.length - 1].toUpperCase() : '',
+      [positionKey]: isAlpha ? text : '',
     }));
 
     const updatedCellValue = {
       ...cellValue,
-      [positionKey]: isAlpha ? text[text.length - 1].toUpperCase() : '',
+      [positionKey]: isAlpha ? text : '',
     }
 
     let isAnswerCorrect = null;
@@ -267,6 +296,10 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
       if (isAnswerCorrect === false) {
         setIncorrectCells(guessingWord.oneTapWord.cells);
       }
+
+      if (isAnswerCorrect === true) {
+        setCorrectCells(guessingWord.oneTapWord.cells);
+      }
     }
 
     onGameStateUpdate({
@@ -277,19 +310,24 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
 
     if (!isBackspace) {
       if (!cellPointer.current) return;
+      let nextPosition = cellPointer.current.peek(1);
+
       const currentPosition = cellPointer.current.current();
-      const nextPosition = cellPointer.current.peek(1);
       const isLastElement = 
         cellPointer.current.indexOf(currentPosition) === cellPointer.current.length - 1;
 
       if (isLastElement && currentPosition) return;
 
       if (nextPosition) {
+        if (correctCells.has(nextPosition)) {
+          nextPosition = cellPointer.current.step(2);
+        }
+
         cellsRef.current[nextPosition].focus();
         cellPointer.current.next();
       }
     }
-  }, [gameState, guessingWord, debounceAnswerCheck, cellValue, onGameStateUpdate]);
+  }, [gameState, guessingWord, debounceAnswerCheck, cellValue, onGameStateUpdate, correctCells]);
 
   const handleBackSpace = useCallback((
     positionKey: string
@@ -303,47 +341,28 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
       e.preventDefault();
 
       if (!cellPointer.current) return;
+      let nextPosition = cellPointer.current.peek(-1);
+
       const currentPosition = cellPointer.current.current();
-      const nextPosition = cellPointer.current.peek(-1);
       const isFirstElement = cellPointer.current.indexOf(currentPosition) === 0;
 
       if (isFirstElement && currentPosition) return;
       if (nextPosition) {
+        if (correctCells.has(nextPosition)) {
+          nextPosition = cellPointer.current.step(-2);
+        }
+
         cellsRef.current[nextPosition].focus();
         cellPointer.current.previous();
       }
     }
-  }, [cellValue]);
+  }, [cellValue, correctCells]);
 
   /**
    * Filling the current state with the saved game state.
    */
   useEffect(() => {
-    if (gameState.correctWords?.length) {
-      const detectedCorrectCells = gameState.correctWords.flatMap((data) => {
-        const cellInputs: Record<string, string> = {};
-
-        for (let i = 1; i < data.word.length; i++) {
-          cellInputs[data.cells[i]] = data.word[i].toUpperCase();
-        }
-
-        setCellValue((prev) => ({
-          ...prev,
-          ...cellInputs,
-        }));
-
-        return data.cells;
-      });
-
-      setCorrectCells(new Set(detectedCorrectCells));
-    }
-
-    if (!isEmpty(gameState.cellsValue)) {
-      setCellValue((prev) => ({
-        ...prev,
-        ...gameState.cellsValue,
-      }));
-    }
+    if (gameState) consumeGameState.current(gameState);
   }, [gameState]);
 
   useEffect(() => {
@@ -402,47 +421,68 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
   ]);
 
   return (
-    <View>
-      <View className='w-full flex justify-center items-center p-10 bg-slate-100 overflow-auto'>
-        {cells}
-      </View>
-      {groupedWords?.across?.length && (
-        <View style={styles.questionsContainer}>
-          <View style={styles.headingContainer}>
-            <Text style={styles.headingText}>Across</Text>
+    <View className="flex-1">
+      <ScrollView
+        style={{ maxHeight: 400 }} // limit max height so clues can be visible too
+        nestedScrollEnabled
+      >
+        <ScrollView
+          horizontal
+          nestedScrollEnabled
+          contentContainerStyle={{
+            alignItems: 'flex-start',
+          }}
+          className="bg-slate-200"
+        >
+          <View className="w-full h-fit p-10 bg-slate-200">
+            {cells}
           </View>
-          {groupedWords.across.map((word) => (
-            <Text
-              key={word.position}
-              style={[
-                styles.questionText,
-                // .has(word.position) && styles.guessedQuestionText
-              ]}
-            >
-              {word.position}. {word.clue}
-            </Text>
-          ))}
-        </View>
-      )}
+        </ScrollView>
+      </ScrollView>
 
-      {groupedWords?.down?.length && (
-        <View style={styles.questionsContainer}>
-          <View style={styles.headingContainer}>
-            <Text style={styles.headingText}>Down</Text>
-          </View>
-          {groupedWords.down.map((word) => (
-            <Text
-              key={word.position}
-              style={[
-                styles.questionText,
-                // correctWordPositions.has(word.position) && styles.guessedQuestionText
-              ]}
-            >
-              {word.position}. {word.clue}
-            </Text>
-          ))}
+      <ScrollView contentContainerStyle={{ paddingBottom: 200 }}>
+        <View className="w-full px-5">
+          {groupedWords?.across?.length && (
+            <View style={styles.questionsContainer}>
+              <View style={styles.headingContainer}>
+                <Text style={styles.headingText} className="dark:text-stone-50 text-stone-900">Across</Text>
+              </View>
+              {groupedWords.across.map((word) => (
+                <Text
+                  key={word.position}
+                  style={[
+                    styles.questionText,
+                    // .has(word.position) && styles.guessedQuestionText
+                  ]}
+                  className="dark:text-stone-50 text-stone-600 mb-2 text-justify"
+                >
+                  {word.position}. {word.clue}
+                </Text>
+              ))}
+            </View>
+          )}
+
+          {groupedWords?.down?.length && (
+            <View style={styles.questionsContainer}>
+              <View style={styles.headingContainer}>
+                <Text style={styles.headingText} className="dark:text-stone-50 text-stone-900">Down</Text>
+              </View>
+              {groupedWords.down.map((word) => (
+                <Text
+                  key={word.position}
+                  style={[
+                    styles.questionText,
+                    // correctWordPositions.has(word.position) && styles.guessedQuestionText
+                  ]}
+                  className="dark:text-stone-50 text-stone-600 mb-2 text-justify"
+                >
+                  {word.position}. {word.clue}
+                </Text>
+              ))}
+            </View>
+          )}
         </View>
-      )}
+      </ScrollView>
     </View>
   );
 }
@@ -463,7 +503,6 @@ const styles = StyleSheet.create({
 	},
 	questionText: {
 		fontSize: 16,
-    color: 'rgba(0, 0, 0, 0.8)'
 	},
   guessedQuestionText: {
     textDecorationLine: 'line-through',
@@ -475,7 +514,6 @@ const styles = StyleSheet.create({
 	headingText: {
 		fontSize: 18,
 		fontWeight: 'bold',
-		color: '#000',
 		textAlign: 'center',
 	},
 });

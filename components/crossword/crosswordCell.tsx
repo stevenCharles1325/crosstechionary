@@ -97,6 +97,8 @@ export const CrossWordCell = memo((props: CrossWordCellProps) => {
         >
           <GestureDetector gesture={gesture(positionKey)}>
             <AnimatedTextInput
+              autoCapitalize="characters"
+              maxLength={1}
               ref={(ref: any) => {
                 if (ref) cellsRef.current[positionKey] = ref;
               }}

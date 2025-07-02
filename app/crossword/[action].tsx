@@ -9,6 +9,7 @@ import Modal from 'react-native-modal';
 import { debounce } from "lodash";
 import { Text } from "~/components/ui/text";
 import { Button } from "~/components/ui/button";
+import { Confetti } from 'react-native-fast-confetti';
 
 const initialState: GameState = {
   id: Date.now(),
@@ -17,7 +18,7 @@ const initialState: GameState = {
   mistakesCount: 0,
   attempts: 0,
   guessingWords: [],
-  timeStart: new Date(),
+  timeStart: Date.now(),
   timeEnd: null,
   cellsValue: {},
   lastDateModified: new Date(),
@@ -25,13 +26,25 @@ const initialState: GameState = {
 
 export default function Crossword() {
   const router = useRouter();
-  const { action } = useLocalSearchParams<{ action: 'continue' | 'new_game' }>();
+  const { action } = useLocalSearchParams<{ action: 'continue' | 'new_game' | 'new_level' }>();
   const [gameState, setGameState] = useState<GameState | null>(null);
   const [needsConfirmation, setNeedsConfirmation] = useState(false);
   const [confirmationAnswer, setConfirmationAnswer] = useState<null | 'yes' | 'no'>(null);
+  const [gameIsFinished, setGameIsFinished] = useState(false);
 
   const debounceSaveState = useMemo(() => 
     debounce((newGameState: GameState) => {
+      const orientationAvailableWords = newGameState.guessingWords.filter(
+        (word) => 
+          word.orientation !== 'none'
+      );
+
+      if (orientationAvailableWords.length === newGameState.correctWords.length) {
+        newGameState.level += 1;
+        newGameState.timeEnd = Date.now();
+        setGameIsFinished(true);
+      }
+
       setGameState(newGameState);
 
       CrosswordState.saveState(newGameState)
@@ -43,9 +56,33 @@ export default function Crossword() {
     (async () => {
       const previousState = await CrosswordState.loadState();
 
-      if (action === 'continue') {
+      if (action === 'continue' && previousState) {
         setGameState(previousState);
 
+        const orientationAvailableWords = previousState.guessingWords.filter(
+          (word) => 
+            word.orientation !== 'none'
+        );
+
+        if (orientationAvailableWords.length === previousState.correctWords.length) {
+          setGameIsFinished(true);
+        }
+
+        return;
+      }
+
+      if (previousState && action === 'new_level') {
+        const newState = {
+          ...initialState,
+          level: previousState.level,
+          guessingWords: pickShuffledWords<{ clue: string, answer: string, orientation?: string }>(
+            words,
+            getDifficultyFromLevel(previousState.level)
+          )
+        };
+
+        setGameState(newState as any);
+        await CrosswordState.saveState(newState as any);
         return;
       }
 
@@ -62,16 +99,31 @@ export default function Crossword() {
           const newState = {
             ...initialState,
             level: currentLevel,
-            guessingWords: pickShuffledWords(
+            guessingWords: pickShuffledWords<{ clue: string, answer: string, orientation?: string }>(
               words,
               getDifficultyFromLevel(currentLevel)
             )
           };
   
-          setGameState(newState);
+          setGameState(newState as any);
           setNeedsConfirmation(false);
-          await CrosswordState.saveState(newState);
+          await CrosswordState.saveState(newState as any);
 
+          return;
+        }
+
+        if (!previousState) {
+          const newState = {
+            ...initialState,
+            level: 1,
+            guessingWords: pickShuffledWords<{ clue: string, answer: string, orientation?: string }>(
+              words,
+              getDifficultyFromLevel(1)
+            )
+          };
+
+          setGameState(newState as any);
+          await CrosswordState.saveState(newState as any);
           return;
         }
 
@@ -83,11 +135,11 @@ export default function Crossword() {
     })();
   }, [action, needsConfirmation, confirmationAnswer]);
 
-  console.log('Game State:', gameState);
+  // console.log('Game State:', gameState);
   return (
     <View className="w-full h-full">
       <Modal isVisible={needsConfirmation}>
-        <View className="w-[100%] h-fit p-5 rounded border border-1 border-stone-300 bg-white">
+        <View className="w-[100%] h-fit p-5 rounded-xl border border-1 border-stone-300 bg-white">
           <Text>Proceeding will clear previous progress, are you sure?</Text>
           <View className="w-full h-fit flex flex-row justify-end">
             <Button
@@ -105,6 +157,62 @@ export default function Crossword() {
           </View>
         </View>
       </Modal>
+      
+      {/* Next level modal */}
+      <Modal isVisible={gameIsFinished}>
+        {gameIsFinished && <Confetti/>}
+        <View className="w-[100%] h-fit p-5 rounded-xl border border-1 border-stone-300 bg-white">
+          <Text className="font-bold text-2xl text-center text-stone-900">Congratulations on finishing the game!</Text>
+          <View className="flex flex-col p-5 border-t mt-5 border-stone-200">
+            <View className="flex flex-row justify-between items-center">
+              <View className="w-1/2">
+                <Text className="text-center text-lg font-bold text-orange-600">Attempts</Text>
+              </View>
+              <View className="w-1/2">
+                <Text className="text-center text-lg font-bold text-orange-600">
+                  {gameState?.attempts}
+                </Text>
+              </View>
+            </View>
+            <View className="flex flex-row justify-between items-center">
+              <View className="w-1/2">
+                <Text className="text-center text-lg font-bold text-orange-600">Mistakes</Text>
+              </View>
+              <View className="w-1/2">
+                <Text className="text-center text-lg font-bold text-orange-600">
+                  {gameState?.mistakesCount}
+                </Text>
+              </View>
+            </View>
+            <View className="flex flex-row justify-between items-center">
+              <View className="w-1/2">
+                <Text className="text-center text-lg font-bold text-orange-600">Time</Text>
+              </View>
+              <View className="w-1/2">
+                <Text className="text-center text-lg font-bold text-orange-600">
+                  {gameState?.timeEnd && gameState.timeStart && new Date(gameState.timeEnd - gameState.timeStart).getTime()}
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View className="w-full h-fit">
+            <Button
+              size="sm"
+              variant="outline"
+              onPress={() => router.push({
+                pathname: '/crossword/[action]',
+                params: { action: 'new_level' }
+              })}
+            >
+              <Text className="text-slate-500">NEXT LEVEL</Text>
+            </Button>
+          </View>
+        </View>
+      </Modal>
+
+      <View className="p-2 flex justify-center items-center">
+        <Text className="font-bold text-slate-500">LEVEL: {gameState?.level}</Text>
+      </View>
       {gameState?.guessingWords?.length ? (
         <CrosswordV2
           gameState={gameState}

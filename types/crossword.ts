@@ -26,9 +26,9 @@ export type WordsGroup = { across: CrosswordResult[], down: CrosswordResult[] };
 export interface GameState {
   id: number;
   level: number;
-  timeStart: Date;
-  timeEnd: Date | null;
-  guessingWords: Pick<CrosswordLayout['result'][number], 'clue' | 'answer'>[];
+  timeStart: number;
+  timeEnd: number | null;
+  guessingWords: Pick<CrosswordLayout['result'][number], 'clue' | 'answer' | 'orientation'>[];
   mistakesCount: number;
   attempts: number;
   correctWords: {
