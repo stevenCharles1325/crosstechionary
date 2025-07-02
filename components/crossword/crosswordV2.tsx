@@ -298,7 +298,12 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
       }
 
       if (isAnswerCorrect === true) {
-        setCorrectCells(guessingWord.oneTapWord.cells);
+        const newCorrectCells = [
+          ...Array.from(correctCells),
+          ...Array.from(guessingWord.oneTapWord.cells),
+        ];
+
+        setCorrectCells(new Set(newCorrectCells));
       }
     }
 
@@ -321,10 +326,11 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
       if (nextPosition) {
         if (correctCells.has(nextPosition)) {
           nextPosition = cellPointer.current.step(2);
+        } else {
+          cellPointer.current.next();
         }
 
         cellsRef.current[nextPosition].focus();
-        cellPointer.current.next();
       }
     }
   }, [gameState, guessingWord, debounceAnswerCheck, cellValue, onGameStateUpdate, correctCells]);
@@ -350,10 +356,11 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
       if (nextPosition) {
         if (correctCells.has(nextPosition)) {
           nextPosition = cellPointer.current.step(-2);
+        } else {
+          cellPointer.current.previous();
         }
 
         cellsRef.current[nextPosition].focus();
-        cellPointer.current.previous();
       }
     }
   }, [cellValue, correctCells]);

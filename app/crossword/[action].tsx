@@ -186,11 +186,12 @@ export default function Crossword() {
             </View>
             <View className="flex flex-row justify-between items-center">
               <View className="w-1/2">
-                <Text className="text-center text-lg font-bold text-orange-600">Time</Text>
+                <Text className="text-center text-lg font-bold text-orange-600">Time (Sec)</Text>
               </View>
               <View className="w-1/2">
                 <Text className="text-center text-lg font-bold text-orange-600">
-                  {gameState?.timeEnd && gameState.timeStart && new Date(gameState.timeEnd - gameState.timeStart).getTime()}
+                  {gameState?.timeEnd && gameState.timeStart && 
+                  Math.floor(new Date(gameState.timeEnd - gameState.timeStart).getTime() / 1000)}
                 </Text>
               </View>
             </View>
