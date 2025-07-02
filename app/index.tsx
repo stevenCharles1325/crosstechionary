@@ -24,11 +24,25 @@ export default function Screen() {
         <Button onPress={() => router.push('/dictionary')}>
           <Text>Dictionary</Text>
         </Button>
-        <Button onPress={() => router.push('/crossword')}>
+        <Button 
+          onPress={() => 
+            router.push({
+              pathname: '/crossword/[action]',
+              params: { action: 'new_game' }
+            })
+          }
+        >
           <Text>New Game</Text>
         </Button>
         {existingGameState && (
-          <Button>
+          <Button 
+            onPress={() => 
+              router.push({
+                pathname: '/crossword/[action]',
+                params: { action: 'continue' }
+              })
+            }
+          >
             <Text>Continue Game</Text>
           </Button>
         )}

@@ -51,8 +51,8 @@ export function Crossword(props: CrosswordTableProps) {
     const anim = cellElevations[key];
     return {
       ...Elevations.interpolate(anim, {
-        inputRange: [0, 50],
-        outputRange: [0, 50],
+        inputRange: [0, 10],
+        outputRange: [0, 10],
       }),
       backgroundColor: 'rgba(0, 0, 0, 0.1)',
       borderRadius: 5,

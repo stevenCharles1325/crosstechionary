@@ -1,15 +1,15 @@
 [
   {
-    "clue": "A procedure used for solving a problem or performing a computation, consisting of a finite sequence of well‑defined instructions",
+    "clue": "A procedure used for solving a problem or performing a computation, consisting of a finite sequence of well_defined instructions",
     "answer": "algorithm"
   },
   {
     "clue": "A type of computer that uses continuously varying physical phenomena (like voltages or mechanical motion) to model problems",
-    "answer": "analog-computer"
+    "answer": "analog_computer"
   },
   {
     "clue": "Software designed to perform specific functions directly for an end user, like word processors or media players",
-    "answer": "application-software"
+    "answer": "application_software"
   },
   {
     "clue": "A software program, especially on mobile devices, that performs a specific task for a user",
@@ -21,7 +21,7 @@
   },
   {
     "clue": "A networking hardware device that allows wireless-capable devices to connect to a wired network",
-    "answer": "access-point"
+    "answer": "access_point"
   },
   {
     "clue": "The design of products, environments, and services to be accessible to people with disabilities, including compatibility with assistive technologies",
@@ -40,8 +40,8 @@
     "answer": "alias"
   },
   {
-    "clue": "The field of computing focused on creating systems that simulate human intelligence, including learning and problem‑solving",
-    "answer": "artificial-intelligence"
+    "clue": "The field of computing focused on creating systems that simulate human intelligence, including learning and problem_solving",
+    "answer": "artificial_intelligence"
   },
   {
     "clue": "A set of rules and specifications that allows one software application to interact with another",
@@ -80,7 +80,7 @@
     "answer": "bit"
   },
   {
-    "clue": "A map of bits that defines a digital image, where each pixel’s color is stored as binary data",
+    "clue": "A map of bits that defines a digital image, where each pixel\u2019s color is stored as binary data",
     "answer": "bitmap"
   },
   {
@@ -88,7 +88,7 @@
     "answer": "blog"
   },
   {
-    "clue": "The process of loading an operating system into a computer’s memory upon startup or restart",
+    "clue": "The process of loading an operating system into a computer\u2019s memory upon startup or restart",
     "answer": "boot"
   },
   {
@@ -125,10 +125,10 @@
   },
   {
     "clue": "A toggle key on keyboards that, when activated, causes letters to be typed in uppercase until pressed again",
-    "answer": "caps-lock"
+    "answer": "caps_lock"
   },
   {
-    "clue": "A challenge–response test used to determine whether the user is human, helping prevent automated bots",
+    "clue": "A challenge response test used to determine whether the user is human, helping prevent automated bots",
     "answer": "captcha"
   },
   {
@@ -140,15 +140,15 @@
     "answer": "clipboard"
   },
   {
-    "clue": "Delivery of computing services—like servers, storage, and software—over the internet on a pay-as-you-go basis",
-    "answer": "cloud-computing"
+    "clue": "Delivery of computing services like servers, storage, and software over the internet on a pay-as-you-go basis",
+    "answer": "cloud_computing"
   },
   {
     "clue": "An instruction entered by a user to direct a computer or software program to perform a specific task",
     "answer": "command"
   },
   {
-    "clue": "A program that translates high‑level source code into low‑level machine code, bytecode, or another language",
+    "clue": "A program that translates high_level source code into low_level machine code, bytecode, or another language",
     "answer": "compiler"
   },
   {
@@ -173,7 +173,7 @@
   },
   {
     "clue": "Illegal activity involving computers or networks, such as hacking, identity theft, or distributing malware",
-    "answer": "cyber‑crime"
+    "answer": "cyber_crime"
   },
   {
     "clue": "A graphical interface in computing that provides at-a-glance views of key metrics and data in one place",
@@ -185,7 +185,7 @@
   },
   {
     "clue": "The process of analyzing large datasets to identify patterns and extract useful insights",
-    "answer": "data-mining"
+    "answer": "data_mining"
   },
   {
     "clue": "An organized collection of structured information stored electronically, managed via a DBMS",
@@ -268,11 +268,11 @@
     "answer": "ethernet"
   },
   {
-    "clue": "A unit of digital information equal to one quintillion bytes (10¹⁸ bytes)",
+    "clue": "A unit of digital information equal to one quintillion bytes (10\u00b9\u2078 bytes)",
     "answer": "exabyte"
   },
   {
-    "clue": "A file containing machine code that can be directly run by a computer’s operating system",
+    "clue": "A file containing machine code that can be directly run by a computer\u2019s operating system",
     "answer": "executable"
   },
   {
@@ -288,12 +288,12 @@
     "answer": "firewall"
   },
   {
-    "clue": "Permanent software programmed into a hardware device’s read-only memory, controlling its basic functions",
+    "clue": "Permanent software programmed into a hardware device\u2019s read-only memory, controlling its basic functions",
     "answer": "firmware"
   },
   {
     "clue": "A magnetic storage medium that uses rotating disks to hold digital data, popular before USB drives",
-    "answer": "floppy-disk"
+    "answer": "floppy_disk"
   },
   {
     "clue": "A reusable set of libraries or tools that provides structure and common functionality to build software applications",
@@ -328,7 +328,7 @@
     "answer": "gui"
   },
   {
-    "clue": "A unit of digital information equal to one billion bytes (10⁹ bytes)",
+    "clue": "A unit of digital information equal to one billion bytes (10\u2079 bytes)",
     "answer": "gigabyte"
   },
   {
@@ -381,7 +381,7 @@
   },
   {
     "clue": "A unique numerical label assigned to each device connected to a computer network that uses the Internet Protocol",
-    "answer": "ip-address"
+    "answer": "ip_address"
   },
   {
     "clue": "The act of repeating a sequence of instructions or steps in a program, typically using loops",
@@ -392,7 +392,7 @@
     "answer": "ieee"
   },
   {
-    "clue": "Apple’s mobile operating system designed for iPhone, iPad, and iPod Touch devices",
+    "clue": "Apple\u2019s mobile operating system designed for iPhone, iPad, and iPod Touch devices",
     "answer": "ios"
   },
   {
@@ -413,7 +413,7 @@
   },
   {
     "clue": "Unwanted, unsolicited email messages sent in bulk, often for advertising or phishing",
-    "answer": "junk-mail"
+    "answer": "junk_mail"
   },
   {
     "clue": "The central core of an operating system that controls hardware, manages processes, memory, and facilitates communication between software and devices",
@@ -437,7 +437,7 @@
   },
   {
     "clue": "A printer that uses a laser and electrically charged toner to produce high-quality text and graphics",
-    "answer": "laser-printer"
+    "answer": "laser_printer"
   },
   {
     "clue": "A reference or pointer, usually clickable, that connects one document or location to another",
@@ -513,7 +513,7 @@
   },
   {
     "clue": "Software whose source code is available for anyone to view, modify, and distribute",
-    "answer": "open-source"
+    "answer": "open_source"
   },
   {
     "clue": "A selectable choice in a program or menu that enables users to customize actions or features",
@@ -541,7 +541,7 @@
   },
   {
     "clue": "A software component that adds specific capabilities or features to an existing application",
-    "answer": "plug-in"
+    "answer": "plug_in"
   },
   {
     "clue": "A website or gateway that provides access to a variety of services or information in one place",
@@ -569,11 +569,11 @@
   },
   {
     "clue": "Computing that uses quantum-mechanical phenomena like superposition and entanglement to perform operations",
-    "answer": "quantum-computing"
+    "answer": "quantum_computing"
   },
   {
     "clue": "A two-dimensional barcode that stores information which can be scanned by devices like smartphones",
-    "answer": "qr-code"
+    "answer": "qr_code"
   },
   {
     "clue": "Volatile memory that can be accessed randomly and is used by the CPU to store temporary data",
@@ -593,7 +593,7 @@
   },
   {
     "clue": "Accessing a computer or network from a remote location, often over the internet",
-    "answer": "remote-access"
+    "answer": "remote_access"
   },
   {
     "clue": "Gaining privileged control of a device, often by exploiting security vulnerabilities",
@@ -601,7 +601,7 @@
   },
   {
     "clue": "A special startup mode where only essential system components are loaded to diagnose issues",
-    "answer": "safe-mode"
+    "answer": "safe_mode"
   },
   {
     "clue": "A computer or program that provides services or resources to other computers, known as clients",
@@ -628,7 +628,7 @@
     "answer": "ssd"
   },
   {
-    "clue": "Service Set Identifier: the name assigned to a Wi‑Fi network to uniquely identify it",
+    "clue": "Service Set Identifier: the name assigned to a Wi_Fi network to uniquely identify it",
     "answer": "ssid"
   },
   {
@@ -656,7 +656,7 @@
     "answer": "underclock"
   },
   {
-    "clue": "A family of multitasking, multi-user operating systems originating from AT&T’s original in 1969",
+    "clue": "A family of multitasking, multi-user operating systems originating from AT&T\u2019s original in 1969",
     "answer": "unix"
   },
   {
@@ -668,12 +668,12 @@
     "answer": "url"
   },
   {
-    "clue": "Computer graphics composed of geometric shapes—points, lines, and curves—that can scale without loss",
-    "answer": "vector-graphics"
+    "clue": "Computer graphics composed of geometric shapes points, lines, and curves that can scale without loss",
+    "answer": "vector_graphics"
   },
   {
     "clue": "Real-time audio and video communications between remote participants (video calls/conferencing)",
-    "answer": "video-telephony"
+    "answer": "video_telephony"
   },
   {
     "clue": "Malicious software that replicates by modifying other programs and spreading to other systems",
@@ -693,7 +693,7 @@
   },
   {
     "clue": "A wireless networking technology based on IEEE 802.11 enabling devices to connect without cables",
-    "answer": "wi‑fi"
+    "answer": "wi_fi"
   },
   {
     "clue": "A Microsoft operating system featuring a graphical user interface and broad application support",
@@ -713,7 +713,7 @@
   },
   {
     "clue": "The global system of interlinked hypertext documents accessed via the Internet",
-    "answer": "world-wide-web"
+    "answer": "world_wide_web"
   },
   {
     "clue": "A collaborative online encyclopedia that can be edited by its users",
@@ -733,6 +733,6 @@
   },
   {
     "clue": "An exploit that takes advantage of a software vulnerability before a patch is available",
-    "answer": "zero‑day"
+    "answer": "zero_day"
   }
 ]

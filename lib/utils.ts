@@ -47,6 +47,48 @@ export const getDifficultyFromLevel = (level: number) => {
   }
 }
 
+type PositionOrientationLoopCallback = (
+  data: {
+    x: number,
+    y: number,
+    positionKey: string,
+  },
+  index: number,
+) => void;
+
+export const positionOrientationLoop = (
+  { answer, orientation, startx, starty }: CrosswordResult,
+  callback: PositionOrientationLoopCallback
+) => {
+  if (orientation === 'down') {
+    for (let i = 0; i < answer.length; i++) {
+      const downPositionKey = `${startx}-${starty + i}`;
+
+      callback(
+        { 
+          x: startx,
+          y: starty + i,
+          positionKey: downPositionKey,
+        },
+        i,
+      );
+    }
+  } else if (orientation === 'across') {
+    for (let i = 0; i < answer.length; i++) {
+      const acrossPositionKey = `${startx + i}-${starty}`;
+
+      callback(
+        { 
+          x: startx + i,
+          y: starty,
+          positionKey: acrossPositionKey,
+        },
+        i,
+      );
+    }
+  }
+}
+
 export const CrosswordState = {
   stateKey: 'gameStates',
 
@@ -79,4 +121,10 @@ export const CrosswordState = {
   clearState() {
     AsyncStorage.removeItem(this.stateKey);
   }
+}
+
+export function intersectSets(a: Set<string>, b: Set<string>) {
+  const result = new Set<string>();
+  for (const v of a) if (b.has(v)) result.add(v);
+  return result;
 }

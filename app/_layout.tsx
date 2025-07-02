@@ -38,11 +38,14 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-      <GestureHandlerRootView>
+      <GestureHandlerRootView style={{ flex: 1 }}>
         <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} />
         <Stack>
           <Stack.Screen
             name='[word]'
+          />
+          <Stack.Screen
+            name='[action]'
           />
           
           <Stack.Screen
