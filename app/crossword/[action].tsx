@@ -10,6 +10,7 @@ import { debounce } from "lodash";
 import { Text } from "~/components/ui/text";
 import { Button } from "~/components/ui/button";
 import { Confetti } from 'react-native-fast-confetti';
+import { appColor } from "~/lib/constants";
 
 const initialState: GameState = {
   id: Date.now(),
@@ -135,24 +136,27 @@ export default function Crossword() {
     })();
   }, [action, needsConfirmation, confirmationAnswer]);
 
-  // console.log('Game State:', gameState);
+  // const wordsMemo = useMemo(() => gameState?.guessingWords.map((data) => `${data.orientation}: ${data.answer}`), [gameState]);
+  // useEffect(() => {
+  //   console.log('WORDS: ', wordsMemo);
+  // }, [wordsMemo]);
   return (
     <View className="w-full h-full">
       <Modal isVisible={needsConfirmation}>
-        <View className="w-[100%] h-fit p-5 rounded-xl border border-1 border-stone-300 bg-white">
+        <View className="w-[100%] h-fit p-5 rounded-xl border border-1" style={{ borderColor: appColor.neonCyanBlue, backgroundColor: appColor.jetBlack }}>
           <Text>Proceeding will clear previous progress, are you sure?</Text>
           <View className="w-full h-fit flex flex-row justify-end">
             <Button
               variant="ghost"
               onPress={() => setConfirmationAnswer('yes')}
             >
-              <Text className="text-red">Yes</Text>
+              <Text>Yes</Text>
             </Button>
             <Button
               variant="ghost"
               onPress={() => setConfirmationAnswer('no')}
             >
-              <Text>No</Text>
+              <Text style={{ color: appColor.neonCyanBlue }}>No</Text>
             </Button>
           </View>
         </View>
@@ -161,35 +165,35 @@ export default function Crossword() {
       {/* Next level modal */}
       <Modal isVisible={gameIsFinished}>
         {gameIsFinished && <Confetti/>}
-        <View className="w-[100%] h-fit p-5 rounded-xl border border-1 border-stone-300 bg-white">
-          <Text className="font-bold text-2xl text-center text-stone-900">Congratulations on finishing the game!</Text>
+        <View className="w-[100%] h-fit p-5 rounded-xl border border-1" style={{ borderColor: appColor.neonCyanBlue, backgroundColor: appColor.jetBlack }}>
+          <Text className="font-bold text-2xl text-center">Congratulations on finishing the game!</Text>
           <View className="flex flex-col p-5 border-t mt-5 border-stone-200">
             <View className="flex flex-row justify-between items-center">
               <View className="w-1/2">
-                <Text className="text-center text-lg font-bold text-orange-600">Attempts</Text>
+                <Text className="text-center text-lg font-bold" style={{ color: appColor.neonCyanBlue }}>Attempts</Text>
               </View>
               <View className="w-1/2">
-                <Text className="text-center text-lg font-bold text-orange-600">
+                <Text className="text-center text-lg font-bold" style={{ color: appColor.neonCyanBlue }}>
                   {gameState?.attempts}
                 </Text>
               </View>
             </View>
             <View className="flex flex-row justify-between items-center">
               <View className="w-1/2">
-                <Text className="text-center text-lg font-bold text-orange-600">Mistakes</Text>
+                <Text className="text-center text-lg font-bold" style={{ color: appColor.neonCyanBlue }}>Mistakes</Text>
               </View>
               <View className="w-1/2">
-                <Text className="text-center text-lg font-bold text-orange-600">
+                <Text className="text-center text-lg font-bold" style={{ color: appColor.neonCyanBlue }}>
                   {gameState?.mistakesCount}
                 </Text>
               </View>
             </View>
             <View className="flex flex-row justify-between items-center">
               <View className="w-1/2">
-                <Text className="text-center text-lg font-bold text-orange-600">Time (Sec)</Text>
+                <Text className="text-center text-lg font-bold" style={{ color: appColor.neonCyanBlue }}>Time (Sec)</Text>
               </View>
               <View className="w-1/2">
-                <Text className="text-center text-lg font-bold text-orange-600">
+                <Text className="text-center text-lg font-bold" style={{ color: appColor.neonCyanBlue }}>
                   {gameState?.timeEnd && gameState.timeStart && 
                   Math.floor(new Date(gameState.timeEnd - gameState.timeStart).getTime() / 1000)}
                 </Text>
@@ -205,15 +209,18 @@ export default function Crossword() {
                 params: { action: 'new_level' }
               })}
             >
-              <Text className="text-slate-500">NEXT LEVEL</Text>
+              <Text style={{ color: appColor.lightBlue }}>NEXT LEVEL</Text>
             </Button>
           </View>
         </View>
       </Modal>
 
+      {gameState?.level ? (
       <View className="p-2 flex justify-center items-center">
-        <Text className="font-bold text-slate-500">LEVEL: {gameState?.level}</Text>
+        <Text className="text-sm font-bold bg-white rounded rounded-full p-1 px-2" style={{ color: appColor.neonCyanBlue }}>Level {gameState?.level}</Text>
       </View>
+      ) : null}
+
       {gameState?.guessingWords?.length ? (
         <CrosswordV2
           gameState={gameState}

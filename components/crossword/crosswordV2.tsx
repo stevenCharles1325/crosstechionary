@@ -3,7 +3,7 @@ import { CrosswordLayout, GameState, WordsGroup } from "~/types/crossword";
 // @ts-ignore
 import { generateLayout } from 'crossword-layout-generator';
 import { intersectSets, positionOrientationLoop } from "~/lib/utils";
-import { View, StyleSheet, NativeSyntheticEvent, TextInputChangeEventData, TextInputKeyPressEventData, Text } from "react-native";
+import { View, StyleSheet, NativeSyntheticEvent, TextInputChangeEventData, TextInputKeyPressEventData, Text, ImageBackground, PanResponder } from "react-native";
 import {
   Gesture,
   TextInput,
@@ -12,6 +12,7 @@ import Cycled from 'cycled';
 import { groupBy, isEmpty, once } from "lodash";
 import { CrossWordCell } from "./crosswordCell";
 import { ScrollView } from 'react-native-gesture-handler';
+import { appColor } from "~/lib/constants";
 
 type GuessingWord = {
   oneTapWord: {
@@ -47,6 +48,24 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
   const wordsCellsRef = useRef<WordCells>({});
   const cellPointer = useRef<Cycled<string> | null>(null);
   const cellsRef = useRef<Record<string, TextInput>>({});
+
+  const [height, setHeight] = useState(200);
+  const initialHeight = useRef(height);
+
+  const panResponder = useRef(
+    PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onPanResponderMove: (_, gesture) => {
+        const newHeight = initialHeight.current + gesture.dy;
+        if (newHeight > 100 && newHeight < 600) {
+          setHeight(newHeight);
+        }
+      },
+      onPanResponderRelease: () => {
+        initialHeight.current = height;
+      },
+    })
+  ).current;
 
   const consumeGameState = useRef(once((state: GameState) => {
     if (state.correctWords?.length) {
@@ -129,7 +148,6 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
 
     // 1. Get the first word detected
     if (!oneTapWord || (oneTapWord && !oneTapWord.cells.has(positionKey))) {
-
       for (const [key, value] of wordsCellEntries) {
         if (value.has(positionKey)) {
           oneTapWord = { word: key, cells: value };
@@ -138,6 +156,9 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
         }
       }
     }
+
+    if (!oneTapWord) return;
+    setHighlightedCells(oneTapWord.cells);
 
     // 2. Get the second word if one of the cell in first word has adjacent word.
     if (oneTapWord?.cells) {
@@ -152,14 +173,11 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
       }
     }
 
-    if (!oneTapWord) return;
-
     const cellsArray = Array.from(oneTapWord.cells);
     const startIndex = cellsArray.indexOf(positionKey);
     cellPointer.current = new Cycled(cellsArray);
     cellPointer.current.index = startIndex;
 
-    setHighlightedCells(oneTapWord.cells);
     setGuessingWord({ oneTapWord, doubleTapWord });
   }, [guessingWord]);
 
@@ -428,31 +446,43 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
   ]);
 
   return (
-    <View className="flex-1">
-      <ScrollView
-        style={{ maxHeight: 400 }} // limit max height so clues can be visible too
-        nestedScrollEnabled
-      >
+    <View className="flex-1 bg-[#000]">
+      <View style={[styles.resizableBox, { height }]}>
         <ScrollView
-          horizontal
           nestedScrollEnabled
-          contentContainerStyle={{
-            alignItems: 'flex-start',
-          }}
-          className="bg-slate-200"
+          keyboardShouldPersistTaps="handled"
+          style={{ backgroundColor: appColor.jetBlack }}
         >
-          <View className="w-full h-fit p-10 bg-slate-200">
-            {cells}
-          </View>
+          <ScrollView
+            horizontal
+            nestedScrollEnabled
+            keyboardShouldPersistTaps="handled"
+            contentContainerStyle={{
+              alignItems: 'flex-start',
+            }}
+            style={{ backgroundColor: 'transparent' }}
+          >
+            <View className="w-full h-fit p-10" style={{ backgroundColor: appColor.jetBlack }}>
+              {cells}
+            </View>
+          </ScrollView>
         </ScrollView>
-      </ScrollView>
+        <View className="w-screen h-[3px] flex flex-row justify-center items-center" style={{ backgroundColor: appColor.neonCyanBlue }}>
+          <View {...panResponder.panHandlers} className="w-[25px] h-[25px] rounded-full bg-[#fff]" style={{ backgroundColor: appColor.neonCyanBlue }}>
+            <Text className="text-center text-sm text-white">^</Text>
+          </View>
+        </View>
+      </View>
 
-      <ScrollView contentContainerStyle={{ paddingBottom: 200 }}>
-        <View className="w-full px-5">
+      <ScrollView>
+        <ImageBackground
+          source={require('../../assets/appImages/background-image.png')}
+          className="w-full px-5 pb-[100px] pt-[50px]"
+        >        
           {groupedWords?.across?.length && (
             <View style={styles.questionsContainer}>
               <View style={styles.headingContainer}>
-                <Text style={styles.headingText} className="dark:text-stone-50 text-stone-900">Across</Text>
+                <Text style={styles.headingText}>Across</Text>
               </View>
               {groupedWords.across.map((word) => (
                 <Text
@@ -472,7 +502,7 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
           {groupedWords?.down?.length && (
             <View style={styles.questionsContainer}>
               <View style={styles.headingContainer}>
-                <Text style={styles.headingText} className="dark:text-stone-50 text-stone-900">Down</Text>
+                <Text style={styles.headingText}>Down</Text>
               </View>
               {groupedWords.down.map((word) => (
                 <Text
@@ -488,7 +518,9 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
               ))}
             </View>
           )}
-        </View>
+        </ImageBackground>
+        {/* <View className="w-full px-5">
+        </View> */}
       </ScrollView>
     </View>
   );
@@ -498,15 +530,21 @@ const styles = StyleSheet.create({
 	row: {
 		flexDirection: 'row',
 	},
-	staticCell: {
-		borderColor: 'transparent',
-    borderWidth: 0,
-		color: 'white',
-	},
+  resizableBox: {
+    width: '100%',
+    backgroundColor: '#33C3FF',
+    overflow: 'hidden',
+    justifyContent: 'space-between',
+  },
 	questionsContainer: {
 		justifyContent: 'space-between',
 		marginBottom: 10,
-		padding: 10,
+		padding: 20,
+    backgroundColor: appColor.jetBlack,
+    borderWidth: 1,
+    borderRadius: 20,
+    elevation: 10,
+    borderColor: appColor.neonCyanBlue,
 	},
 	questionText: {
 		fontSize: 16,
@@ -519,8 +557,9 @@ const styles = StyleSheet.create({
 		marginBottom: 5,
 	},
 	headingText: {
-		fontSize: 18,
+		fontSize: 20,
 		fontWeight: 'bold',
 		textAlign: 'center',
+    color: appColor.neonCyanBlue,
 	},
 });

@@ -1,6 +1,7 @@
-import React, { memo, RefObject, useEffect, useMemo, useRef } from "react";
+import React, { memo, RefObject, useEffect, useMemo, useRef, useState } from "react";
 import { NativeSyntheticEvent, TextInputChangeEventData, TextInputKeyPressEventData, StyleSheet, Animated, Easing, View, Text } from "react-native";
 import { ExclusiveGesture, TextInput, Gesture, GestureDetector } from "react-native-gesture-handler";
+import { appColor } from "~/lib/constants";
 
 const AnimatedView = Animated.createAnimatedComponent(View);
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
@@ -38,9 +39,9 @@ export const CrossWordCell = memo((props: CrossWordCellProps) => {
     onKeyPress,
   } = props;
   
-  if (shouldHighlight) console.log(shouldHighlight);
+  const [isFocused, setIsFocused] = useState(false);
   const isBlankCell = cell === '-';
-
+  
   const shakeAnim = useRef(new Animated.Value(0)).current;
   const shakeInterpolation = shakeAnim.interpolate({
     inputRange: [-1, 1],
@@ -62,7 +63,7 @@ export const CrossWordCell = memo((props: CrossWordCellProps) => {
   };
 
   useEffect(() => {
-    runShake();
+    if (shouldShake) runShake();
   }, [shouldShake]);
 
   return (
@@ -70,11 +71,20 @@ export const CrossWordCell = memo((props: CrossWordCellProps) => {
       style={styles.cellContainer}
     >
       {/* Word Position */}
-      {wordPositions ?
-      <View style={styles.smallDigitContainer}>
+      {!isBlankCell && wordPositions ?
+      <View style={[
+        styles.smallDigitContainer,
+        
+      ]}>
         <View className="flex flex-row gap-1">
-          {wordPositions.map(position => (
-            <Text key={`word-position-${position}`} style={styles.smallDigit}>
+          {wordPositions.map((position, index) => (
+            <Text
+              key={`word-position-${position}-${cell}-${index}`}
+              style={[
+                styles.smallDigit,
+                hasBeenGuessed && styles.smallDigitOnGuessedCell
+              ]}
+            >
               {position}
             </Text>
           ))}
@@ -102,13 +112,18 @@ export const CrossWordCell = memo((props: CrossWordCellProps) => {
               ref={(ref: any) => {
                 if (ref) cellsRef.current[positionKey] = ref;
               }}
+              caretHidden
               style={[
                 styles.cell,
                 shouldHighlight && styles.highlightedCell,
                 hasBeenGuessed && styles.correctCell,
+                isFocused && styles.focusedField,
               ]}
               editable={isEditable}
               value={value}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+              selection={{ start: value?.length || 0, end: value?.length || 0 }}
               onChange={onChange(positionKey)}
               onKeyPress={onKeyPress(positionKey)}
             />
@@ -132,13 +147,14 @@ const styles = StyleSheet.create({
 	cell: {
 		borderWidth: 1,
 		margin: 1,
-		borderColor: '#f47c0b',
+		borderColor: appColor.neonCyanBlue,
     borderRadius: 5,
 		width: 30,
 		height: 33,
     lineHeight: 1,
     padding: 0,
 		textAlign: 'center',
+    color: 'white'
 	},
 	staticCell: {
 		borderColor: 'transparent',
@@ -148,10 +164,13 @@ const styles = StyleSheet.create({
   correctCell: {
     fontWeight: 'bold',
     color: '#fff',
-    backgroundColor: '#f47c0b',
+    backgroundColor: appColor.neonCyanBlue,
   },
   highlightedCell: {
-    borderWidth: 2,
+    backgroundColor: '#003858',
+  },
+  focusedField: {
+    borderWidth: 2.5,
   },
 	smallDigitContainer: {
 		position: 'absolute',
@@ -159,12 +178,17 @@ const styles = StyleSheet.create({
 		left: 3,
     display: 'flex',
     flexDirection: 'row',
-    gap: 2
+    gap: 2,
+    zIndex: 2,
 	},
   smallDigit: {
 		fontSize: 10,
 		fontWeight: 'bold',
+    color: '#fff',
 	},
+  smallDigitOnGuessedCell: {
+    color: '#fff',
+  },
 	button: {
 		flex: 1, // Ensure equal width for both buttons
 	},

@@ -14,14 +14,17 @@ export default function Description () {
   
   const searchText = word.toLowerCase();
 
-  const wordData = useMemo(() => words.find(({ answer }) => answer.toLowerCase() === searchText), [searchText]);
+  const wordData = useMemo(() => 
+    words.find(({ answer }) => 
+      answer.toLowerCase().replaceAll('_', '-') === searchText)
+  ,[searchText]);
 
   return (
     <View className="w-full h-full p-3">
       <Card>
         <CardHeader>
-          <CardTitle>{wordData?.answer}</CardTitle>
-          <CardDescription>{wordData?.clue}</CardDescription>
+          <CardTitle className="capitalize mb-3">{wordData?.answer.replaceAll('_', '-')}</CardTitle>
+          <CardDescription className="text-justify">{wordData?.clue}</CardDescription>
         </CardHeader>
       </Card>
       <Text></Text>

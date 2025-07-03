@@ -80,7 +80,7 @@
     "answer": "bit"
   },
   {
-    "clue": "A map of bits that defines a digital image, where each pixel\u2019s color is stored as binary data",
+    "clue": "A map of bits that defines a digital image, where each pixel's color is stored as binary data",
     "answer": "bitmap"
   },
   {
@@ -88,7 +88,7 @@
     "answer": "blog"
   },
   {
-    "clue": "The process of loading an operating system into a computer\u2019s memory upon startup or restart",
+    "clue": "The process of loading an operating system into a computer's memory upon startup or restart",
     "answer": "boot"
   },
   {
@@ -268,11 +268,11 @@
     "answer": "ethernet"
   },
   {
-    "clue": "A unit of digital information equal to one quintillion bytes (10\u00b9\u2078 bytes)",
+    "clue": "A unit of digital information equal to one quintillion bytes (10¹⁸ bytes)",
     "answer": "exabyte"
   },
   {
-    "clue": "A file containing machine code that can be directly run by a computer\u2019s operating system",
+    "clue": "A file containing machine code that can be directly run by a computer's operating system",
     "answer": "executable"
   },
   {
@@ -288,7 +288,7 @@
     "answer": "firewall"
   },
   {
-    "clue": "Permanent software programmed into a hardware device\u2019s read-only memory, controlling its basic functions",
+    "clue": "Permanent software programmed into a hardware device's read-only memory, controlling its basic functions",
     "answer": "firmware"
   },
   {
@@ -328,7 +328,7 @@
     "answer": "gui"
   },
   {
-    "clue": "A unit of digital information equal to one billion bytes (10\u2079 bytes)",
+    "clue": "A unit of digital information equal to one billion bytes (10⁹ bytes)",
     "answer": "gigabyte"
   },
   {
@@ -392,7 +392,7 @@
     "answer": "ieee"
   },
   {
-    "clue": "Apple\u2019s mobile operating system designed for iPhone, iPad, and iPod Touch devices",
+    "clue": "Apple's mobile operating system designed for iPhone, iPad, and iPod Touch devices",
     "answer": "ios"
   },
   {
@@ -656,7 +656,7 @@
     "answer": "underclock"
   },
   {
-    "clue": "A family of multitasking, multi-user operating systems originating from AT&T\u2019s original in 1969",
+    "clue": "A family of multitasking, multi-user operating systems originating from AT&T's original in 1969",
     "answer": "unix"
   },
   {

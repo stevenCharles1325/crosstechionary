@@ -6,6 +6,7 @@ import { Text } from '~/components/ui/text';
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
 import { useRouter } from "expo-router";
+import { appColor } from "~/lib/constants";
 
 const typedDict = dictionary as Record<string, { clue: string, answer: string }[]>;
 
@@ -35,7 +36,7 @@ export default function Dictionary() {
   }, [searchText]);
 
   return (
-    <View className="w-full h-full">
+    <View className="w-full h-full pb-10" style={{ backgroundColor: appColor.jetBlack }}>
       <View className="flex flex-row justify-start items-center w-full">
         <Input
           className="grow"
@@ -50,9 +51,9 @@ export default function Dictionary() {
         renderItem={({ item }) => {
           if (item.type === 'header') {
             return (
-              <View className="bg-[#f0f0f0] px-2">
+              <View className="h-[30px] px-2" style={{ backgroundColor: appColor.skyBlue, opacity: 0.8 }}>
                 {/* @ts-ignore */}
-                <Text className="text-[#000] font-bold">{item.title}</Text>
+                <Text className="text-2xl text-[#fff] font-bold capitalize">{item.title}</Text>
               </View>
             );
           }
@@ -69,7 +70,7 @@ export default function Dictionary() {
                 })}
               >
                 {/* @ts-ignore */}
-                <Text className="w-full text-start">{item.answer}</Text>
+                <Text className="w-full text-start capitalize">{item.answer}</Text>
               </Button>
             </View>
           );

@@ -21,7 +21,7 @@
       "answer": "address"
     },
     {
-      "clue": "A procedure used for solving a problem or performing a computation, consisting of a finite sequence of well\u2011defined instructions",
+      "clue": "A procedure used for solving a problem or performing a computation, consisting of a finite sequence of well-defined instructions",
       "answer": "algorithm"
     },
     {
@@ -57,7 +57,7 @@
       "answer": "array"
     },
     {
-      "clue": "The field of computing focused on creating systems that simulate human intelligence, including learning and problem\u2011solving",
+      "clue": "The field of computing focused on creating systems that simulate human intelligence, including learning and problem-solving",
       "answer": "artificial-intelligence"
     },
     {
@@ -83,7 +83,7 @@
       "answer": "bit"
     },
     {
-      "clue": "A map of bits that defines a digital image, where each pixel\u2019s color is stored as binary data",
+      "clue": "A map of bits that defines a digital image, where each pixel's color is stored as binary data",
       "answer": "bitmap"
     },
     {
@@ -99,7 +99,7 @@
       "answer": "bluetooth"
     },
     {
-      "clue": "The process of loading an operating system into a computer\u2019s memory upon startup or restart",
+      "clue": "The process of loading an operating system into a computer's memory upon startup or restart",
       "answer": "boot"
     },
     {
@@ -133,7 +133,7 @@
       "answer": "caps-lock"
     },
     {
-      "clue": "A challenge\u2013response test used to determine whether the user is human, helping prevent automated bots",
+      "clue": "A challenge-response test used to determine whether the user is human, helping prevent automated bots",
       "answer": "captcha"
     },
     {
@@ -145,7 +145,7 @@
       "answer": "clipboard"
     },
     {
-      "clue": "Delivery of computing services\u2014like servers, storage, and software\u2014over the internet on a pay-as-you-go basis",
+      "clue": "Delivery of computing services—like servers, storage, and software—over the internet on a pay-as-you-go basis",
       "answer": "cloud-computing"
     },
     {
@@ -157,7 +157,7 @@
       "answer": "compile"
     },
     {
-      "clue": "A program that translates high\u2011level source code into low\u2011level machine code, bytecode, or another language",
+      "clue": "A program that translates high-level source code into low-level machine code, bytecode, or another language",
       "answer": "compiler"
     },
     {
@@ -178,7 +178,7 @@
     },
     {
       "clue": "Illegal activity involving computers or networks, such as hacking, identity theft, or distributing malware",
-      "answer": "cyber\u2011crime"
+      "answer": "cyber-crime"
     }
   ],
   "D": [
@@ -281,11 +281,11 @@
       "answer": "ethernet"
     },
     {
-      "clue": "A unit of digital information equal to one quintillion bytes (10\u00b9\u2078 bytes)",
+      "clue": "A unit of digital information equal to one quintillion bytes (10¹⁸ bytes)",
       "answer": "exabyte"
     },
     {
-      "clue": "A file containing machine code that can be directly run by a computer\u2019s operating system",
+      "clue": "A file containing machine code that can be directly run by a computer's operating system",
       "answer": "executable"
     }
   ],
@@ -303,7 +303,7 @@
       "answer": "firewall"
     },
     {
-      "clue": "Permanent software programmed into a hardware device\u2019s read-only memory, controlling its basic functions",
+      "clue": "Permanent software programmed into a hardware device's read-only memory, controlling its basic functions",
       "answer": "firmware"
     },
     {
@@ -329,7 +329,7 @@
       "answer": "gif"
     },
     {
-      "clue": "A unit of digital information equal to one billion bytes (10\u2079 bytes)",
+      "clue": "A unit of digital information equal to one billion bytes (10⁹ bytes)",
       "answer": "gigabyte"
     },
     {
@@ -401,7 +401,7 @@
       "answer": "internet"
     },
     {
-      "clue": "Apple\u2019s mobile operating system designed for iPhone, iPad, and iPod Touch devices",
+      "clue": "Apple's mobile operating system designed for iPhone, iPad, and iPod Touch devices",
       "answer": "ios"
     },
     {
@@ -665,7 +665,7 @@
       "answer": "ssd"
     },
     {
-      "clue": "Service Set Identifier: the name assigned to a Wi\u2011Fi network to uniquely identify it",
+      "clue": "Service Set Identifier: the name assigned to a Wi-Fi network to uniquely identify it",
       "answer": "ssid"
     },
     {
@@ -701,7 +701,7 @@
       "answer": "underclock"
     },
     {
-      "clue": "A family of multitasking, multi-user operating systems originating from AT&T\u2019s original in 1969",
+      "clue": "A family of multitasking, multi-user operating systems originating from AT&T's original in 1969",
       "answer": "unix"
     },
     {
@@ -715,7 +715,7 @@
   ],
   "V": [
     {
-      "clue": "Computer graphics composed of geometric shapes\u2014points, lines, and curves\u2014that can scale without loss",
+      "clue": "Computer graphics composed of geometric shapes—points, lines, and curves—that can scale without loss",
       "answer": "vector-graphics"
     },
     {
@@ -758,7 +758,7 @@
     },
     {
       "clue": "A wireless networking technology based on IEEE 802.11 enabling devices to connect without cables",
-      "answer": "wi\u2011fi"
+      "answer": "wi-fi"
     },
     {
       "clue": "The global system of interlinked hypertext documents accessed via the Internet",
@@ -780,7 +780,7 @@
   "Z": [
     {
       "clue": "An exploit that takes advantage of a software vulnerability before a patch is available",
-      "answer": "zero\u2011day"
+      "answer": "zero-day"
     },
     {
       "clue": "A compressed archive file format (e.g., .zip) used to bundle and compress multiple files",
