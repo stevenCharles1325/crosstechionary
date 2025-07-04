@@ -2,7 +2,7 @@ import { View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
 import { GameState } from "~/types/crossword";
-import { CrosswordState, getDifficultyFromLevel, pickShuffledWords } from "~/lib/utils";
+import { CrosswordState, getDifficultyFromLevel, pickConnectedWords } from "~/lib/utils";
 import words from "~/data/crossword-words.json"
 import CrosswordV2 from "~/components/crossword/crosswordV2";
 import Modal from 'react-native-modal';
@@ -41,7 +41,7 @@ export default function Crossword() {
       );
 
       if (orientationAvailableWords.length === newGameState.correctWords.length) {
-        newGameState.level += 1;
+        newGameState.level = newGameState.level >= 3 ? 3 : newGameState.level + 1;
         newGameState.timeEnd = Date.now();
         setGameIsFinished(true);
       }
@@ -73,12 +73,14 @@ export default function Crossword() {
       }
 
       if (previousState && action === 'new_level') {
+        const level = previousState.level >= 3 ? 3 : previousState.level;
+
         const newState = {
           ...initialState,
-          level: previousState.level,
-          guessingWords: pickShuffledWords<{ clue: string, answer: string, orientation?: string }>(
+          level,
+          guessingWords: pickConnectedWords(
             words,
-            getDifficultyFromLevel(previousState.level)
+            getDifficultyFromLevel(level)
           )
         };
 
@@ -100,7 +102,7 @@ export default function Crossword() {
           const newState = {
             ...initialState,
             level: currentLevel,
-            guessingWords: pickShuffledWords<{ clue: string, answer: string, orientation?: string }>(
+            guessingWords: pickConnectedWords(
               words,
               getDifficultyFromLevel(currentLevel)
             )
@@ -117,7 +119,7 @@ export default function Crossword() {
           const newState = {
             ...initialState,
             level: 1,
-            guessingWords: pickShuffledWords<{ clue: string, answer: string, orientation?: string }>(
+            guessingWords: pickConnectedWords(
               words,
               getDifficultyFromLevel(1)
             )

@@ -20,15 +20,48 @@ export const isAdjacent = (positionKeyA: string, positionKeyB: string) => {
   return startxA === startxB || startyA === startyB;
 }
 
-export function pickShuffledWords<T>(arr: T[], count: number): T[] {
-  const shuffled = [...arr];
+export type Word = {
+  clue: string;
+  answer: string;
+  orientation?: string;
+};
 
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+export function pickConnectedWords(words: Word[], count: number): Word[] {
+  if (count <= 0) return [];
+
+  const byLetter: Record<string, Set<Word>> = {};
+  for (const w of words) {
+    for (const ch of new Set(w.answer)) {
+      if (!byLetter[ch]) byLetter[ch] = new Set();
+      byLetter[ch].add(w);
+    }
   }
 
-  return shuffled.slice(0, count);
+  // Seed with a random word
+  const available = new Set(words);
+  const result: Word[] = [];
+  const seed = words[Math.floor(Math.random() * words.length)];
+  result.push(seed);
+  available.delete(seed);
+
+  while (result.length < count && available.size > 0) {
+    const connected = new Set<Word>();
+    for (const w of result) {
+      for (const ch of new Set(w.answer)) {
+        for (const cand of byLetter[ch] ?? []) {
+          if (available.has(cand)) connected.add(cand);
+        }
+      }
+    }
+
+    if (connected.size === 0) break; // cannot expand connection
+
+    const next = Array.from(connected)[Math.floor(Math.random() * connected.size)];
+    result.push(next);
+    available.delete(next);
+  }
+
+  return result.length === count ? result : [];
 }
 
 export const getDifficultyFromLevel = (level: number) => {

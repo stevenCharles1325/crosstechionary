@@ -9,10 +9,12 @@ import {
   TextInput,
 } from 'react-native-gesture-handler';
 import Cycled from 'cycled';
-import { groupBy, isEmpty, once } from "lodash";
+import { debounce, groupBy, isEmpty, once } from "lodash";
 import { CrossWordCell } from "./crosswordCell";
 import { ScrollView } from 'react-native-gesture-handler';
 import { appColor } from "~/lib/constants";
+import { CrosswordCellRow } from "./crosswordCellRow";
+import { Button } from "../ui/button";
 
 type GuessingWord = {
   oneTapWord: {
@@ -47,7 +49,7 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
 
   const wordsCellsRef = useRef<WordCells>({});
   const cellPointer = useRef<Cycled<string> | null>(null);
-  const cellsRef = useRef<Record<string, TextInput>>({});
+  const cellsRef = useRef<Record<string, TextInput & { value?: string }>>({});
 
   const [height, setHeight] = useState(200);
   const initialHeight = useRef(height);
@@ -76,11 +78,6 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
           cellInputs[data.cells[i]] = data.word[i].toUpperCase();
         }
 
-        setCellValue((prev) => ({
-          ...prev,
-          ...cellInputs,
-        }));
-
         return data.cells;
       });
 
@@ -88,12 +85,19 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
     }
 
     if (!isEmpty(state.cellsValue)) {
+      Object.entries(state.cellsValue).forEach(([positionKey, value]) => {
+        if (!cellsRef.current[positionKey]) return;
+
+        cellsRef.current[positionKey].value = value;
+        cellsRef.current[positionKey].setNativeProps({ text: value });
+      });
+
       setCellValue((prev) => ({
         ...prev,
         ...state.cellsValue,
       }));
     }
-  }));
+  })).current;
 
   const layout: CrosswordLayout = useMemo(() => 
     generateLayout(gameState.guessingWords)
@@ -129,7 +133,6 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
               _wordOrder[positionKey].push(position);
             } else {
               _wordOrder[positionKey] = [position];
-
             }
 
             wordsCellsRef.current[result.answer] = cellPositions;
@@ -192,6 +195,13 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
          * Swap the words if double tapped.
          */
         if (common.size && common.has(positionKey)) {
+          let doubleTapWord: GuessingWord['doubleTapWord'] = guessingWord.doubleTapWord;
+
+          const cellsArray = Array.from(doubleTapWord.cells);
+          const startIndex = cellsArray.indexOf(positionKey);
+          cellPointer.current = new Cycled(cellsArray);
+          cellPointer.current.index = startIndex;
+
           setGuessingWord((prev) => {
             const { oneTapWord: oneTap, doubleTapWord: doubleTap } = prev;
   
@@ -230,7 +240,7 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
     )
   , [oneTap, doubleTap]);
 
-  const debounceAnswerCheck = useMemo(() => 
+  const checkAnswer = useMemo(() => 
     (
       word: string, 
       cells: Set<string>, 
@@ -273,85 +283,96 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
     }
   , [gameState, onGameStateUpdate]);
 
+  const debouncedOnChangeHandling = useMemo(() =>
+    debounce(() => {
+      if (!guessingWord.oneTapWord) return;
+    
+      const updatedCellValue: typeof cellValue = {
+        ...cellValue,
+      };
+
+      const cellsArray = Array.from(guessingWord.oneTapWord.cells);
+      let fieldWithValueCount = 0;
+
+      for (const positionKey of cellsArray) {
+        const cellInput = cellsRef.current[positionKey].value;
+
+        updatedCellValue[positionKey] = cellInput ?? '';
+
+        if (cellInput && cellInput.length) fieldWithValueCount++;
+      }
+
+      setCellValue(updatedCellValue);
+
+      let isReadyForChecking = fieldWithValueCount === cellsArray.length;
+      let isAnswerCorrect = null;
+      let newState: GameState | undefined = gameState;
+
+      if (isReadyForChecking) {
+        const checkResult = checkAnswer(
+          guessingWord.oneTapWord.word,
+          guessingWord.oneTapWord.cells,
+          updatedCellValue,
+          gameState,
+        );
+        isAnswerCorrect = checkResult ? checkResult.at(0) : null;
+        newState = (checkResult ? checkResult.at(1) : {}) as GameState | undefined;
+
+        if (isAnswerCorrect === false) {
+          setIncorrectCells(guessingWord.oneTapWord.cells);
+        }
+
+        if (isAnswerCorrect === true) {
+          const newCorrectCells = [
+            ...Array.from(correctCells),
+            ...Array.from(guessingWord.oneTapWord.cells),
+          ];
+
+          setCorrectCells(new Set(newCorrectCells));
+        }
+      }
+
+      onGameStateUpdate({
+        ...gameState,
+        ...newState,
+        cellsValue: updatedCellValue,
+      });
+    }, 300)
+  , [gameState, guessingWord, checkAnswer, cellValue, onGameStateUpdate, correctCells]);
+
   const onChangeText = useCallback((
     positionKey: string,
   ) => (
     e: NativeSyntheticEvent<TextInputChangeEventData>
   ) => {
-    if (!guessingWord.oneTapWord) return;
-    
-    e.preventDefault();
-
     const text = e.nativeEvent.text;
-
-    // Alpha characters only, and allow backspace
-    const isAlpha = /^[A-Za-z-]+?$/.test(text);
     const isBackspace = !text.length;
 
-    setCellValue((prev) => ({
-      ...prev,
-      [positionKey]: isAlpha ? text : '',
-    }));
+    cellsRef.current[positionKey].value = text;
+    cellsRef.current[positionKey].setNativeProps({ text });
 
-    const updatedCellValue = {
-      ...cellValue,
-      [positionKey]: isAlpha ? text : '',
+    debouncedOnChangeHandling();
+
+    const pointer = cellPointer.current;
+
+    if (isBackspace || !pointer) return;
+    
+    const currentPosition = pointer.current();
+    const positionIndex = pointer.indexOf(currentPosition);
+
+    // If last position, then ignore
+    if (positionIndex === pointer.length - 1) return;
+
+    let nextPosition = pointer.peek(1);
+
+    if (nextPosition && correctCells.has(nextPosition)) {
+      nextPosition = pointer.step(2);
+    } else {
+      pointer.next();
     }
 
-    let isAnswerCorrect = null;
-    let newState: GameState | undefined = gameState;
-
-    if (!isBackspace) {
-      const checkResult = debounceAnswerCheck(
-        guessingWord.oneTapWord.word,
-        guessingWord.oneTapWord.cells,
-        updatedCellValue,
-        gameState,
-      );
-      isAnswerCorrect = checkResult ? checkResult.at(0) : null;
-      newState = (checkResult ? checkResult.at(1) : {}) as GameState | undefined;
-
-      if (isAnswerCorrect === false) {
-        setIncorrectCells(guessingWord.oneTapWord.cells);
-      }
-
-      if (isAnswerCorrect === true) {
-        const newCorrectCells = [
-          ...Array.from(correctCells),
-          ...Array.from(guessingWord.oneTapWord.cells),
-        ];
-
-        setCorrectCells(new Set(newCorrectCells));
-      }
-    }
-
-    onGameStateUpdate({
-      ...gameState,
-      ...newState,
-      cellsValue: updatedCellValue,
-    });
-
-    if (!isBackspace) {
-      if (!cellPointer.current) return;
-      let nextPosition = cellPointer.current.peek(1);
-
-      const currentPosition = cellPointer.current.current();
-      const isLastElement = 
-        cellPointer.current.indexOf(currentPosition) === cellPointer.current.length - 1;
-
-      if (isLastElement && currentPosition) return;
-
-      if (nextPosition) {
-        if (correctCells.has(nextPosition)) {
-          nextPosition = cellPointer.current.step(2);
-        } else {
-          cellPointer.current.next();
-        }
-
-        cellsRef.current[nextPosition].focus();
-      }
-    }
-  }, [gameState, guessingWord, debounceAnswerCheck, cellValue, onGameStateUpdate, correctCells]);
+    cellsRef.current[nextPosition].focus();
+  }, [debouncedOnChangeHandling]);
 
   const handleBackSpace = useCallback((
     positionKey: string
@@ -359,36 +380,50 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
     e: NativeSyntheticEvent<TextInputKeyPressEventData>
   ) => {
     const key = e.nativeEvent.key;
+    const cellValue = cellsRef.current[positionKey]?.value;
 
-    if (key === 'Backspace' && !cellValue[positionKey]?.length) {
+    if (key === 'Backspace' && !cellValue?.length) {
       e.stopPropagation();
       e.preventDefault();
 
-      if (!cellPointer.current) return;
-      let nextPosition = cellPointer.current.peek(-1);
+      const pointer = cellPointer.current;
+      if (!pointer) return;
+    
+      const currentPosition = pointer.current();
+      const positionIndex = pointer.indexOf(currentPosition);
 
-      const currentPosition = cellPointer.current.current();
-      const isFirstElement = cellPointer.current.indexOf(currentPosition) === 0;
+      // If last position, then ignore
+      if (positionIndex === 0) return;
 
-      if (isFirstElement && currentPosition) return;
-      if (nextPosition) {
-        if (correctCells.has(nextPosition)) {
-          nextPosition = cellPointer.current.step(-2);
-        } else {
-          cellPointer.current.previous();
-        }
+      let nextPosition = pointer.peek(-1);
 
-        cellsRef.current[nextPosition].focus();
+      if (nextPosition && correctCells.has(nextPosition)) {
+        nextPosition = pointer.step(-2);
+      } else {
+        pointer.previous();
       }
-    }
-  }, [cellValue, correctCells]);
 
-  /**
-   * Filling the current state with the saved game state.
-   */
-  useEffect(() => {
-    if (gameState) consumeGameState.current(gameState);
-  }, [gameState]);
+      cellsRef.current[nextPosition].focus();
+    }
+  }, [correctCells]);
+
+  const clearCells = useCallback(async () => {
+    const newCellValue: Record<string, string> = {};
+
+    Object.keys(cellValue).forEach((positionKey) => {
+      if (correctCells.has(positionKey)) return;
+
+      newCellValue[positionKey] = '';
+      cellsRef.current[positionKey].value = '';
+      cellsRef.current[positionKey].setNativeProps({ text: '' });
+    });
+
+    setCellValue(newCellValue);
+    onGameStateUpdate({
+      ...gameState,
+      cellsValue: newCellValue,
+    });
+  }, [gameState, cellValue, correctCells]);
 
   useEffect(() => {
     const timeout = 500;
@@ -404,38 +439,30 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
   }, [incorrectCells]);
 
   const cells = useMemo(() => {
+    if (isEmpty(wordOrder)) return [];
+
     return layout.table.map((row, rowIndex) => (
       <View key={rowIndex} style={styles.row}>
-        {row.map((cell, cellIndex) => {
-          const starty = rowIndex + 1;
-          const startx = cellIndex + 1;
-          const positionKey = `${startx}-${starty}`;
-
-          return (
-            <CrossWordCell
-              key={positionKey}
-              cell={cell}
-              cellsRef={cellsRef}
-              rowIndex={rowIndex}
-              cellIndex={cellIndex}
-              positionKey={positionKey}
-              value={cellValue[positionKey]}
-              hasBeenGuessed={correctCells.has(positionKey)}
-              isEditable={!correctCells.has(positionKey)}
-              shouldShake={incorrectCells.has(positionKey)}
-              wordPositions={wordOrder[positionKey]}
-              shouldHighlight={highlightedCells.has(positionKey)}
-              gesture={gesture}
-              onChange={onChangeText}
-              onKeyPress={handleBackSpace}
-            />
-          );
-        })}
+        {row.map((cell, cellIndex) => 
+          <CrosswordCellRow
+            key={`${rowIndex + 1}-${cellIndex + 1}`}
+            cell={cell}
+            rowIndex={rowIndex}
+            cellsRef={cellsRef}
+            cellIndex={cellIndex}
+            wordPositions={wordOrder}
+            correctCells={correctCells}
+            incorrectCells={incorrectCells}
+            highlightedCells={highlightedCells}
+            gesture={gesture}
+            onChange={onChangeText}
+            onKeyPress={handleBackSpace}
+          />
+        )}
       </View>
     ));
   }, [
     layout,
-    cellValue,
     wordOrder,
     correctCells,
     incorrectCells,
@@ -444,6 +471,15 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
     onChangeText,
     handleBackSpace,
   ]);
+
+  /**
+   * Filling the current state with the saved game state.
+   */
+  useEffect(() => {
+    if (gameState && cells.length) {
+      consumeGameState(gameState);
+    }
+  }, [gameState, cells]);
 
   return (
     <View className="flex-1 bg-[#000]">
@@ -478,7 +514,12 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
         <ImageBackground
           source={require('../../assets/appImages/background-image.png')}
           className="w-full px-5 pb-[100px] pt-[50px]"
-        >        
+        >
+          <View className="mb-3 flex flex-row-reverse">
+            <Button className="w-[120px] rounded-full" variant="destructive" size="sm" onPress={clearCells}>
+              <Text className="text-white">Clear Guesses</Text>
+            </Button>
+          </View>
           {groupedWords?.across?.length && (
             <View style={styles.questionsContainer}>
               <View style={styles.headingContainer}>
