@@ -74,7 +74,7 @@ export default function Screen() {
             <Text className='text-white'>New Game</Text>
           </Button>
 
-          {existingGameState && (
+          {existingGameState && existingGameState.level <= 3 && (
             <Button
               style={[styles.buttonStyle]}
               onPress={() => 
@@ -88,7 +88,7 @@ export default function Screen() {
             </Button>
           )}
 
-          {existingGameState && existingGameState.level > 1 && (
+          {existingGameState && existingGameState.level > 1  && existingGameState.level <= 3 && (
             <Button style={[styles.buttonStyle]} onPress={() => setIsResettingGameState(true)}>
               <Text className='text-white'>Reset Game</Text>
             </Button>

@@ -49,7 +49,7 @@ export default function Crossword() {
       );
 
       if (orientationAvailableWords.length === newGameState.correctWords.length) {
-        newGameState.level = newGameState.level >= 3 ? 3 : newGameState.level + 1;
+        newGameState.level = newGameState.level + 1;
         newGameState.timeEnd = Date.now();
         setGameIsFinished(true);
       }
@@ -65,25 +65,29 @@ export default function Crossword() {
     (async () => {
       const previousState = await CrosswordState.loadState();
 
+      let isGameFinished = false;
+
+      if (previousState) {
+        const orientationAvailableWords = previousState.guessingWords.filter(
+          (word) => 
+            word.orientation !== 'none'
+        );
+
+        isGameFinished = orientationAvailableWords.length === previousState.correctWords.length;
+      }
+
       if (action === 'continue' && previousState) {
-        startTransition(async () => {
+        startTransition(() => {
           setGameState(previousState);
   
-          const orientationAvailableWords = previousState.guessingWords.filter(
-            (word) => 
-              word.orientation !== 'none'
-          );
-  
-          if (orientationAvailableWords.length === previousState.correctWords.length) {
-            setGameIsFinished(true);
-          }
+          if (isGameFinished) setGameIsFinished(true);
         });
 
         return;
       }
 
       if (previousState && action === 'new_level') {
-        startTransition(async () => {
+        startTransition(() => {
           const level = previousState.level >= 3 ? 3 : previousState.level;
   
           const newState = {
@@ -96,13 +100,36 @@ export default function Crossword() {
           };
   
           setGameState(newState as any);
-          await CrosswordState.saveState(newState as any);
+          CrosswordState.saveState(newState as any).catch(console.log);
         });
 
         return;
       }
 
       if (action === 'new_game') {
+        if (previousState && previousState.level > 3) {
+          console.log('HEREEEEE')
+          const currentLevel = 3;
+
+          setTimeout(() => {
+            startTransition(() => {
+              const newState = {
+                ...initialState,
+                level: currentLevel,
+                guessingWords: pickConnectedWords(
+                  words,
+                  getDifficultyFromLevel(currentLevel)
+                )
+              };
+      
+              setGameState(newState as any);
+              CrosswordState.saveState(newState as any).catch(console.log);
+            });
+          }, 200);
+
+          return;
+        }
+
         if (previousState && !needsConfirmation && !confirmationAnswer) {
           setNeedsConfirmation(true);
 
@@ -115,7 +142,7 @@ export default function Crossword() {
           setNeedsConfirmation(false);
 
           setTimeout(() => {
-            startTransition(async () => {
+            startTransition(() => {
               const newState = {
                 ...initialState,
                 level: currentLevel,
@@ -126,7 +153,7 @@ export default function Crossword() {
               };
       
               setGameState(newState as any);
-              await CrosswordState.saveState(newState as any);
+              CrosswordState.saveState(newState as any).catch(console.log);
             });
           }, 200);
 
@@ -134,7 +161,7 @@ export default function Crossword() {
         }
 
         if (!previousState) {
-          startTransition(async () => {
+          startTransition(() => {
             const newState = {
               ...initialState,
               level: 1,
@@ -145,7 +172,7 @@ export default function Crossword() {
             };
   
             setGameState(newState as any);
-            await CrosswordState.saveState(newState as any);
+            CrosswordState.saveState(newState as any).catch(console.log);
           });
 
           return;
@@ -182,8 +209,8 @@ export default function Crossword() {
       </Modal>
       
       {/* Next level modal */}
-      <Modal isVisible={gameIsFinished}>
-        {gameIsFinished && <Confetti/>}
+      <Modal isVisible={Boolean(gameState) && gameIsFinished}>
+        <Confetti/>
         <View className="w-[100%] h-fit p-5 rounded-xl border border-1" style={{ borderColor: appColor.neonCyanBlue, backgroundColor: appColor.jetBlack }}>
           <Text className="font-bold text-2xl text-center">Congratulations on finishing the game!</Text>
           <View className="flex flex-col p-5 border-t mt-5 border-stone-200">
@@ -219,6 +246,7 @@ export default function Crossword() {
               </View>
             </View>
           </View>
+          {gameState && gameState.level < 3 ? (
           <View className="w-full h-fit">
             <Button
               size="sm"
@@ -231,6 +259,27 @@ export default function Crossword() {
               <Text style={{ color: appColor.lightBlue }}>NEXT LEVEL</Text>
             </Button>
           </View>
+          ): (
+          <View className="w-full h-fit flex flex-row justify-center items-center gap-2">
+            <Button
+              size="sm"
+              variant="outline"
+              onPress={() => router.push({
+                pathname: '/crossword/[action]',
+                params: { action: 'new_game' }
+              })}
+            >
+              <Text style={{ color: appColor.lightBlue }}>NEW GAME</Text>
+            </Button>
+            <Button
+              size="sm"
+              variant="outline"
+              onPress={() => router.back()}
+            >
+              <Text style={{ color: appColor.lightBlue }}>HOME</Text>
+            </Button>
+          </View>
+          )}
         </View>
       </Modal>
 
