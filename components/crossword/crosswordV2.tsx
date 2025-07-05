@@ -10,7 +10,6 @@ import {
 } from 'react-native-gesture-handler';
 import Cycled from 'cycled';
 import { debounce, groupBy, isEmpty, once } from "lodash";
-import { CrossWordCell } from "./crosswordCell";
 import { ScrollView } from 'react-native-gesture-handler';
 import { appColor } from "~/lib/constants";
 import { CrosswordCellRow } from "./crosswordCellRow";
@@ -36,7 +35,6 @@ export interface CrosswordV2Props {
 export default function CrosswordV2 (props: CrosswordV2Props) {
   const { gameState, onGameStateUpdate } = props;
 
-  // temporary states
   const [wordOrder, setWordOrder] = useState<Record<string, number[]>>({});
   const [incorrectCells, setIncorrectCells] = useState<Set<string>>(new Set());
   const [highlightedCells, setHighlightedCells] = useState<Set<string>>(new Set());
@@ -97,7 +95,7 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
         ...state.cellsValue,
       }));
     }
-  })).current;
+  }));
 
   const layout: CrosswordLayout = useMemo(() => 
     generateLayout(gameState.guessingWords)
@@ -408,15 +406,17 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
   }, [correctCells]);
 
   const clearCells = useCallback(async () => {
-    const newCellValue: Record<string, string> = {};
+    const newCellValue: Record<string, string> = {
+      ...cellValue,
+    };
 
-    Object.keys(cellValue).forEach((positionKey) => {
-      if (correctCells.has(positionKey)) return;
-
+    for (const positionKey of Object.keys(cellValue)) {
+      if (correctCells.has(positionKey)) continue;
+  
       newCellValue[positionKey] = '';
       cellsRef.current[positionKey].value = '';
       cellsRef.current[positionKey].setNativeProps({ text: '' });
-    });
+    }
 
     setCellValue(newCellValue);
     onGameStateUpdate({
@@ -477,7 +477,7 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
    */
   useEffect(() => {
     if (gameState && cells.length) {
-      consumeGameState(gameState);
+      consumeGameState.current(gameState);
     }
   }, [gameState, cells]);
 

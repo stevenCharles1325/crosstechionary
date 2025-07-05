@@ -36,9 +36,9 @@ export default function Screen() {
               <Button
                 variant="ghost"
                 onPress={() => {
+                  setIsResettingGameState(false);
                   CrosswordState.clearState();
                   setExistingGameState(null);
-                  setIsResettingGameState(false);
 
                   router.push({
                     pathname: '/crossword/[action]',

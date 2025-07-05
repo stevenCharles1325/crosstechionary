@@ -1,6 +1,6 @@
-import { View } from "react-native";
+import { ActivityIndicator, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useTransition } from "react";
 import { GameState } from "~/types/crossword";
 import { CrosswordState, getDifficultyFromLevel, pickConnectedWords } from "~/lib/utils";
 import words from "~/data/crossword-words.json"
@@ -25,8 +25,16 @@ const initialState: GameState = {
   lastDateModified: new Date(),
 }
 
+const messages = {
+  continue: 'Fetching progress...',
+  new_game: 'Generating the layout and words...',
+  new_level: 'Congrats! On to the next level...',
+};
+
 export default function Crossword() {
   const router = useRouter();
+
+  const [isPending, startTransition] = useTransition();
   const { action } = useLocalSearchParams<{ action: 'continue' | 'new_game' | 'new_level' }>();
   const [gameState, setGameState] = useState<GameState | null>(null);
   const [needsConfirmation, setNeedsConfirmation] = useState(false);
@@ -58,34 +66,39 @@ export default function Crossword() {
       const previousState = await CrosswordState.loadState();
 
       if (action === 'continue' && previousState) {
-        setGameState(previousState);
-
-        const orientationAvailableWords = previousState.guessingWords.filter(
-          (word) => 
-            word.orientation !== 'none'
-        );
-
-        if (orientationAvailableWords.length === previousState.correctWords.length) {
-          setGameIsFinished(true);
-        }
+        startTransition(async () => {
+          setGameState(previousState);
+  
+          const orientationAvailableWords = previousState.guessingWords.filter(
+            (word) => 
+              word.orientation !== 'none'
+          );
+  
+          if (orientationAvailableWords.length === previousState.correctWords.length) {
+            setGameIsFinished(true);
+          }
+        });
 
         return;
       }
 
       if (previousState && action === 'new_level') {
-        const level = previousState.level >= 3 ? 3 : previousState.level;
+        startTransition(async () => {
+          const level = previousState.level >= 3 ? 3 : previousState.level;
+  
+          const newState = {
+            ...initialState,
+            level,
+            guessingWords: pickConnectedWords(
+              words,
+              getDifficultyFromLevel(level)
+            )
+          };
+  
+          setGameState(newState as any);
+          await CrosswordState.saveState(newState as any);
+        });
 
-        const newState = {
-          ...initialState,
-          level,
-          guessingWords: pickConnectedWords(
-            words,
-            getDifficultyFromLevel(level)
-          )
-        };
-
-        setGameState(newState as any);
-        await CrosswordState.saveState(newState as any);
         return;
       }
 
@@ -99,34 +112,42 @@ export default function Crossword() {
         if (previousState && needsConfirmation && confirmationAnswer === 'yes') {
           const currentLevel = previousState?.level ?? initialState.level ?? 1;
   
-          const newState = {
-            ...initialState,
-            level: currentLevel,
-            guessingWords: pickConnectedWords(
-              words,
-              getDifficultyFromLevel(currentLevel)
-            )
-          };
-  
-          setGameState(newState as any);
           setNeedsConfirmation(false);
-          await CrosswordState.saveState(newState as any);
+
+          setTimeout(() => {
+            startTransition(async () => {
+              const newState = {
+                ...initialState,
+                level: currentLevel,
+                guessingWords: pickConnectedWords(
+                  words,
+                  getDifficultyFromLevel(currentLevel)
+                )
+              };
+      
+              setGameState(newState as any);
+              await CrosswordState.saveState(newState as any);
+            });
+          }, 200);
 
           return;
         }
 
         if (!previousState) {
-          const newState = {
-            ...initialState,
-            level: 1,
-            guessingWords: pickConnectedWords(
-              words,
-              getDifficultyFromLevel(1)
-            )
-          };
+          startTransition(async () => {
+            const newState = {
+              ...initialState,
+              level: 1,
+              guessingWords: pickConnectedWords(
+                words,
+                getDifficultyFromLevel(1)
+              )
+            };
+  
+            setGameState(newState as any);
+            await CrosswordState.saveState(newState as any);
+          });
 
-          setGameState(newState as any);
-          await CrosswordState.saveState(newState as any);
           return;
         }
 
@@ -138,10 +159,6 @@ export default function Crossword() {
     })();
   }, [action, needsConfirmation, confirmationAnswer]);
 
-  // const wordsMemo = useMemo(() => gameState?.guessingWords.map((data) => `${data.orientation}: ${data.answer}`), [gameState]);
-  // useEffect(() => {
-  //   console.log('WORDS: ', wordsMemo);
-  // }, [wordsMemo]);
   return (
     <View className="w-full h-full">
       <Modal isVisible={needsConfirmation}>
@@ -223,7 +240,14 @@ export default function Crossword() {
       </View>
       ) : null}
 
-      {gameState?.guessingWords?.length ? (
+      {isPending ? (
+        <View className="flex flex-col justify-center items-center mt-10 gap-5">
+          <Text>{messages[action]}</Text>
+          <ActivityIndicator size="large" color={appColor.neonCyanBlue} />
+        </View>
+      ) : null}
+
+      {!isPending && gameState?.guessingWords?.length ? (
         <CrosswordV2
           gameState={gameState}
           onGameStateUpdate={debounceSaveState}
