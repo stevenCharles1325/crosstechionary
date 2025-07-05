@@ -19,7 +19,6 @@ export interface CrossWordCellProps {
   wordPositions: number[] | null;
   cellsRef: RefObject<Record<string, TextInput & { value?: string }>>;
   gesture: (positionKey: string) => ExclusiveGesture;
-  onChange: (positionKey: string) => (e: NativeSyntheticEvent<TextInputChangeEventData>) => void;
   onKeyPress: (positionKey: string) => (e: NativeSyntheticEvent<TextInputKeyPressEventData>) => void;
 }
 
@@ -55,7 +54,6 @@ export const CrossWordCell = memo((props: CrossWordCellProps) => {
     hasBeenGuessed,
     shouldHighlight,
     gesture,
-    onChange,
     onKeyPress,
   } = props;
   
@@ -122,7 +120,6 @@ export const CrossWordCell = memo((props: CrossWordCellProps) => {
               selection={{ start: value.length, end: value.length }}
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
-              onChange={onChange(positionKey)}
               onKeyPress={onKeyPress(positionKey)}
             />
           </GestureDetector>

@@ -11,7 +11,6 @@ interface CrosswordCellRowProps {
   wordPositions: Record<string, number[]>;
   cellsRef: CrossWordCellProps['cellsRef'];
   gesture: CrossWordCellProps['gesture'];
-  onChange: CrossWordCellProps['onChange'];
   onKeyPress: CrossWordCellProps['onKeyPress'];
 }
 
@@ -26,7 +25,6 @@ export const CrosswordCellRow = React.memo((props: CrosswordCellRowProps) => {
     highlightedCells,
     wordPositions,
     gesture,
-    onChange,
     onKeyPress,
   } = props;
 
@@ -48,7 +46,6 @@ export const CrosswordCellRow = React.memo((props: CrosswordCellRowProps) => {
       wordPositions={wordPositions[positionKey]}
       shouldHighlight={highlightedCells.has(positionKey)}
       gesture={gesture}
-      onChange={onChange}
       onKeyPress={onKeyPress}
     />
   );

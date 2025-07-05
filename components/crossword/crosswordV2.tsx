@@ -3,7 +3,7 @@ import { CrosswordLayout, GameState, WordsGroup } from "~/types/crossword";
 // @ts-ignore
 import { generateLayout } from 'crossword-layout-generator';
 import { intersectSets, positionOrientationLoop } from "~/lib/utils";
-import { View, StyleSheet, NativeSyntheticEvent, TextInputChangeEventData, TextInputKeyPressEventData, Text, ImageBackground, PanResponder } from "react-native";
+import { View, StyleSheet, NativeSyntheticEvent, TextInputKeyPressEventData, Text, ImageBackground, PanResponder } from "react-native";
 import {
   Gesture,
   TextInput,
@@ -14,6 +14,8 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { appColor } from "~/lib/constants";
 import { CrosswordCellRow } from "./crosswordCellRow";
 import { Button } from "../ui/button";
+
+const PATTERN = /^[A-Z-]+$/;
 
 type GuessingWord = {
   oneTapWord: {
@@ -340,10 +342,8 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
 
   const onChangeText = useCallback((
     positionKey: string,
-  ) => (
-    e: NativeSyntheticEvent<TextInputChangeEventData>
+    text: string
   ) => {
-    const text = e.nativeEvent.text;
     const isBackspace = !text.length;
 
     cellsRef.current[positionKey].value = text;
@@ -372,15 +372,29 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
     cellsRef.current[nextPosition].focus();
   }, [debouncedOnChangeHandling]);
 
-  const handleBackSpace = useCallback((
+  const handleTextChangeAndBackSpace = useCallback((
     positionKey: string
   ) => (
     e: NativeSyntheticEvent<TextInputKeyPressEventData>
   ) => {
     const key = e.nativeEvent.key;
+    const allowedCharacter = PATTERN.test(key);
+    const isBackspace = key === 'Backspace';
     const cellValue = cellsRef.current[positionKey]?.value;
 
-    if (key === 'Backspace' && !cellValue?.length) {
+    if (allowedCharacter || (isBackspace && cellValue?.length)) {
+      e.stopPropagation();
+      e.preventDefault();
+
+      onChangeText(
+        positionKey,
+        isBackspace ? '' : key
+      );
+
+      return;
+    }
+
+    if (isBackspace && !cellValue?.length) {
       e.stopPropagation();
       e.preventDefault();
 
@@ -402,8 +416,9 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
       }
 
       cellsRef.current[nextPosition].focus();
+      return;
     }
-  }, [correctCells]);
+  }, [correctCells, onChangeText]);
 
   const clearCells = useCallback(async () => {
     const newCellValue: Record<string, string> = {
@@ -455,8 +470,7 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
             incorrectCells={incorrectCells}
             highlightedCells={highlightedCells}
             gesture={gesture}
-            onChange={onChangeText}
-            onKeyPress={handleBackSpace}
+            onKeyPress={handleTextChangeAndBackSpace}
           />
         )}
       </View>
@@ -469,7 +483,7 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
     highlightedCells,
     gesture,
     onChangeText,
-    handleBackSpace,
+    handleTextChangeAndBackSpace
   ]);
 
   /**
