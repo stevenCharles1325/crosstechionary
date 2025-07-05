@@ -9,7 +9,7 @@ import {
   TextInput,
 } from 'react-native-gesture-handler';
 import Cycled from 'cycled';
-import { debounce, groupBy, isEmpty, once } from "lodash";
+import _, { debounce, groupBy, isEmpty, once } from "lodash";
 import { ScrollView } from 'react-native-gesture-handler';
 import { appColor } from "~/lib/constants";
 import { CrosswordCellRow } from "./crosswordCellRow";
@@ -42,11 +42,11 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
   const [highlightedCells, setHighlightedCells] = useState<Set<string>>(new Set());
   const [correctCells, setCorrectCells] = useState<Set<string>>(new Set());
   const [cellValue, setCellValue] = useState<Record<string, string>>({});
-  const [guessingWord, setGuessingWord] = useState<GuessingWord>({
+
+  const guessingWord = useRef<GuessingWord>({
     oneTapWord: null,
     doubleTapWord: null,
   });
-
   const wordsCellsRef = useRef<WordCells>({});
   const cellPointer = useRef<Cycled<string> | null>(null);
   const cellsRef = useRef<Record<string, TextInput & { value?: string }>>({});
@@ -144,8 +144,8 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
   }, [layout]);
 
   const oneTapHandler = useCallback(async (positionKey: string) => {
-    let oneTapWord: GuessingWord['oneTapWord'] = guessingWord.oneTapWord;
-    let doubleTapWord: GuessingWord['doubleTapWord'] = null;
+    let oneTapWord: GuessingWord['oneTapWord'] = guessingWord.current.oneTapWord;
+    let doubleTapWord: GuessingWord['doubleTapWord'] = guessingWord.current.doubleTapWord;
 
     const wordsCellEntries = Object.entries(wordsCellsRef.current);
 
@@ -181,13 +181,15 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
     cellPointer.current = new Cycled(cellsArray);
     cellPointer.current.index = startIndex;
 
-    setGuessingWord({ oneTapWord, doubleTapWord });
-  }, [guessingWord]);
+    guessingWord.current = { oneTapWord, doubleTapWord };
+  }, []);
 
   const doubleTapHandler = useCallback((positionKey: string) => {
     try {
-      if (guessingWord.oneTapWord?.cells && guessingWord.doubleTapWord?.cells) {
-        const common = intersectSets(guessingWord.oneTapWord.cells, guessingWord.doubleTapWord.cells);
+      const _guessingWord = guessingWord.current;
+
+      if (_guessingWord.oneTapWord?.cells && _guessingWord.doubleTapWord?.cells) {
+        const common = intersectSets(_guessingWord.oneTapWord.cells, _guessingWord.doubleTapWord.cells);
   
         if (!common.size) return;
   
@@ -195,23 +197,19 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
          * Swap the words if double tapped.
          */
         if (common.size && common.has(positionKey)) {
-          let doubleTapWord: GuessingWord['doubleTapWord'] = guessingWord.doubleTapWord;
+          let doubleTapWord: GuessingWord['doubleTapWord'] = _guessingWord.doubleTapWord;
 
           const cellsArray = Array.from(doubleTapWord.cells);
           const startIndex = cellsArray.indexOf(positionKey);
           cellPointer.current = new Cycled(cellsArray);
           cellPointer.current.index = startIndex;
 
-          setGuessingWord((prev) => {
-            const { oneTapWord: oneTap, doubleTapWord: doubleTap } = prev;
-  
-            return {
-              oneTapWord: doubleTap,
-              doubleTapWord: oneTap,
-            }
-          });
+          guessingWord.current = {
+            oneTapWord: _guessingWord.doubleTapWord,
+            doubleTapWord: _guessingWord.oneTapWord,
+          }
 
-          setHighlightedCells(guessingWord.doubleTapWord.cells);
+          setHighlightedCells(_guessingWord.doubleTapWord.cells);
         }
       }
     } catch (error) {
@@ -285,13 +283,13 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
 
   const debouncedOnChangeHandling = useMemo(() =>
     debounce(() => {
-      if (!guessingWord.oneTapWord) return;
+      if (!guessingWord.current.oneTapWord) return;
     
       const updatedCellValue: typeof cellValue = {
         ...cellValue,
       };
 
-      const cellsArray = Array.from(guessingWord.oneTapWord.cells);
+      const cellsArray = Array.from(guessingWord.current.oneTapWord.cells);
       let fieldWithValueCount = 0;
 
       for (const positionKey of cellsArray) {
@@ -310,8 +308,8 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
 
       if (isReadyForChecking) {
         const checkResult = checkAnswer(
-          guessingWord.oneTapWord.word,
-          guessingWord.oneTapWord.cells,
+          guessingWord.current.oneTapWord.word,
+          guessingWord.current.oneTapWord.cells,
           updatedCellValue,
           gameState,
         );
@@ -319,13 +317,13 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
         newState = (checkResult ? checkResult.at(1) : {}) as GameState | undefined;
 
         if (isAnswerCorrect === false) {
-          setIncorrectCells(guessingWord.oneTapWord.cells);
+          setIncorrectCells(guessingWord.current.oneTapWord.cells);
         }
 
         if (isAnswerCorrect === true) {
           const newCorrectCells = [
             ...Array.from(correctCells),
-            ...Array.from(guessingWord.oneTapWord.cells),
+            ...Array.from(guessingWord.current.oneTapWord.cells),
           ];
 
           setCorrectCells(new Set(newCorrectCells));
@@ -338,7 +336,7 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
         cellsValue: updatedCellValue,
       });
     }, 300)
-  , [gameState, guessingWord, checkAnswer, cellValue, onGameStateUpdate, correctCells]);
+  , [gameState, checkAnswer, cellValue, onGameStateUpdate, correctCells]);
 
   const onChangeText = useCallback((
     positionKey: string,

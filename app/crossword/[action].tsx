@@ -108,7 +108,6 @@ export default function Crossword() {
 
       if (action === 'new_game') {
         if (previousState && previousState.level > 3) {
-          console.log('HEREEEEE')
           const currentLevel = 3;
 
           setTimeout(() => {
