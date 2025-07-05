@@ -8,6 +8,9 @@ import { GameState } from '~/types/crossword';
 import Modal from 'react-native-modal';
 import { appColor } from '~/lib/constants';
 import { useFocusEffect } from '@react-navigation/native';
+import { Appearance } from 'react-native';
+
+Appearance.setColorScheme('dark');
 
 export default function Screen() {
   const router = useRouter();
