@@ -59,6 +59,7 @@ export const CrossWordCell = memo((props: CrossWordCellProps) => {
   
   const [isFocused, setIsFocused] = useState(false);
   const isBlankCell = cell === '-';
+  const cellNumbers = wordPositions?.length ? wordPositions.join(', ') : null;
 
   useEffect(() => {
     if (shouldShake) runShake();
@@ -69,22 +70,20 @@ export const CrossWordCell = memo((props: CrossWordCellProps) => {
       style={styles.cellContainer}
     >
       {/* Word Position */}
-      {!isBlankCell && wordPositions ?
+      {!isBlankCell && cellNumbers ?
       <View style={[
         styles.smallDigitContainer,
       ]}>
         <View className="flex flex-row gap-1">
-          {wordPositions.map((position, index) => (
-            <Text
-              key={`word-position-${position}-${cell}-${index}`}
-              style={[
-                styles.smallDigit,
-                hasBeenGuessed && styles.smallDigitOnGuessedCell
-              ]}
-            >
-              {position}
-            </Text>
-          ))}
+          <Text
+            key={`word-position-${cellNumbers}`}
+            style={[
+              styles.smallDigit,
+              hasBeenGuessed && styles.smallDigitOnGuessedCell
+            ]}
+          >
+            {cellNumbers}
+          </Text>
         </View>
       </View>
       : null}

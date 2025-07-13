@@ -245,7 +245,7 @@ export default function Crossword() {
               </View>
             </View>
           </View>
-          {gameState && gameState.level < 3 ? (
+          {gameState && gameState.level <= 3 ? (
           <View className="w-full h-fit">
             <Button
               size="sm"

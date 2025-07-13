@@ -15,8 +15,6 @@ import { appColor } from "~/lib/constants";
 import { CrosswordCellRow } from "./crosswordCellRow";
 import { Button } from "../ui/button";
 
-const PATTERN = /^[A-Z-]+$/;
-
 type GuessingWord = {
   oneTapWord: {
     word: string;
@@ -376,21 +374,8 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
     e: NativeSyntheticEvent<TextInputKeyPressEventData>
   ) => {
     const key = e.nativeEvent.key;
-    const allowedCharacter = PATTERN.test(key);
     const isBackspace = key === 'Backspace';
     const cellValue = cellsRef.current[positionKey]?.value;
-
-    if (allowedCharacter || (isBackspace && cellValue?.length)) {
-      e.stopPropagation();
-      e.preventDefault();
-
-      onChangeText(
-        positionKey,
-        isBackspace ? '' : key
-      );
-
-      return;
-    }
 
     if (isBackspace && !cellValue?.length) {
       e.stopPropagation();
@@ -416,6 +401,14 @@ export default function CrosswordV2 (props: CrosswordV2Props) {
       cellsRef.current[nextPosition].focus();
       return;
     }
+
+    e.stopPropagation();
+    e.preventDefault();
+
+    onChangeText(
+      positionKey,
+      isBackspace ? '' : key
+    );
   }, [correctCells, onChangeText]);
 
   const clearCells = useCallback(async () => {
