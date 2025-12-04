@@ -2,789 +2,1157 @@
   "A": [
     {
       "clue": "A sensor that measures acceleration forces, commonly used in mobile devices to detect orientation or motion",
-      "answer": "accelerometer"
+      "answer": "accelerometer",
+      "reference_url": "https://www.geeksforgeeks.org/physics/accelerometer/",
+      "image_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80"
     },
     {
       "clue": "A networking hardware device that allows wireless-capable devices to connect to a wired network",
-      "answer": "access-point"
+      "answer": "access-point",
+      "reference_url": "https://www.cisco.com/c/en/us/solutions/small-business/resource-center/networking/what-is-access-point.html",
+      "image_url": "https://images.unsplash.com/photo-1606904825846-647eb58c2e5c?w=800&q=80"
     },
     {
       "clue": "The design of products, environments, and services to be accessible to people with disabilities, including compatibility with assistive technologies",
-      "answer": "accessibility"
+      "answer": "accessibility",
+      "reference_url": "https://www.w3.org/WAI/fundamentals/accessibility-intro/",
+      "image_url": "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800&q=80"
     },
     {
       "clue": "A now-deprecated Microsoft software framework based on COM/OLE, used for embedding content like videos or calendars in applications",
-      "answer": "activex"
+      "answer": "activex",
+      "reference_url": "https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/",
+      "image_url": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80"
     },
     {
       "clue": "A unique reference to a specific location in memory used by software and hardware",
-      "answer": "address"
+      "answer": "address",
+      "reference_url": "https://www.geeksforgeeks.org/memory-address-register-mar/",
+      "image_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
     },
     {
       "clue": "A procedure used for solving a problem or performing a computation, consisting of a finite sequence of well-defined instructions",
-      "answer": "algorithm"
+      "answer": "algorithm",
+      "reference_url": "https://www.geeksforgeeks.org/dsa/introduction-to-algorithms/",
+      "image_url": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80"
     },
     {
       "clue": "An alternate name or label that refers to another identifier in computing, often used for shortcuts or simplification",
-      "answer": "alias"
+      "answer": "alias",
+      "reference_url": "https://www.gnu.org/software/bash/manual/html_node/Aliases.html",
+      "image_url": "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80"
     },
     {
       "clue": "A type of computer that uses continuously varying physical phenomena (like voltages or mechanical motion) to model problems",
-      "answer": "analog-computer"
+      "answer": "analog-computer",
+      "reference_url": "https://www.britannica.com/technology/analog-computer",
+      "image_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80"
     },
     {
       "clue": "A mobile operating system developed by Google, primarily for touchscreen devices",
-      "answer": "android"
+      "answer": "android",
+      "reference_url": "https://developer.android.com/about",
+      "image_url": "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=800&q=80"
     },
     {
       "clue": "A set of rules and specifications that allows one software application to interact with another",
-      "answer": "api"
+      "answer": "api",
+      "reference_url": "https://www.ibm.com/think/topics/api",
+      "image_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
     },
     {
       "clue": "A software program, especially on mobile devices, that performs a specific task for a user",
-      "answer": "app"
+      "answer": "app",
+      "reference_url": "https://www.techopedia.com/definition/2953/application-app",
+      "image_url": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80"
     },
     {
       "clue": "Software designed to perform specific functions directly for an end user, like word processors or media players",
-      "answer": "application-software"
+      "answer": "application-software",
+      "reference_url": "https://www.geeksforgeeks.org/application-software/",
+      "image_url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
     },
     {
       "clue": "A file or collection of files stored together, often compressed, for backup or transport",
-      "answer": "archive"
+      "answer": "archive",
+      "reference_url": "https://www.gnu.org/software/tar/manual/tar.html",
+      "image_url": "https://images.unsplash.com/photo-1544396821-4dd40b938ad3?w=800&q=80"
     },
     {
       "clue": "A data structure consisting of a collection of elements, each identified by an index or key, stored in contiguous memory",
-      "answer": "array"
+      "answer": "array",
+      "reference_url": "https://www.geeksforgeeks.org/dsa/array-data-structure-guide/",
+      "image_url": "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&q=80"
     },
     {
       "clue": "The field of computing focused on creating systems that simulate human intelligence, including learning and problem-solving",
-      "answer": "artificial-intelligence"
+      "answer": "artificial-intelligence",
+      "reference_url": "https://www.ibm.com/topics/artificial-intelligence",
+      "image_url": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80"
     },
     {
       "clue": "A motherboard and power-supply form factor specification introduced by Intel in 1995 for standardized PC design",
-      "answer": "atx"
+      "answer": "atx",
+      "reference_url": "https://www.intel.com/content/www/us/en/support/articles/000005585/processors.html",
+      "image_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80"
     }
   ],
   "B": [
     {
       "clue": "A copy of computer data stored elsewhere to restore the original after data loss or corruption",
-      "answer": "backup"
+      "answer": "backup",
+      "reference_url": "https://www.veeam.com/blog/what-is-backup.html",
+      "image_url": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80"
     },
     {
       "clue": "The maximum rate of data transfer across a network connection, typically measured in bits per second",
-      "answer": "bandwidth"
+      "answer": "bandwidth",
+      "reference_url": "https://www.cisco.com/c/en/us/support/docs/quality-of-service-qos/qos-policing/22833-qos-faq.html",
+      "image_url": "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&q=80"
     },
     {
       "clue": "A numbering system using only two digits, 0 and 1, fundamental to all digital computing",
-      "answer": "binary"
+      "answer": "binary",
+      "reference_url": "https://www.techtarget.com/whatis/definition/binary",
+      "image_url": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80"
     },
     {
       "clue": "The smallest unit of data in computing, representing a single binary value (0 or 1)",
-      "answer": "bit"
+      "answer": "bit",
+      "reference_url": "https://web.stanford.edu/class/cs101/bits-bytes.html",
+      "image_url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80"
     },
     {
       "clue": "A map of bits that defines a digital image, where each pixel's color is stored as binary data",
-      "answer": "bitmap"
+      "answer": "bitmap",
+      "reference_url": "https://www.adobe.com/creativecloud/file-types/image/raster/bmp-file.html",
+      "image_url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80"
     },
     {
       "clue": "A decentralized ledger of blocks linked using cryptography, often used to record transactions securely",
-      "answer": "blockchain"
+      "answer": "blockchain",
+      "reference_url": "https://www.ibm.com/topics/blockchain",
+      "image_url": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80"
     },
     {
       "clue": "A frequently updated website displaying posts in reverse chronological order, often for commentary or news",
-      "answer": "blog"
+      "answer": "blog",
+      "reference_url": "https://wordpress.org/about/",
+      "image_url": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&q=80"
     },
     {
       "clue": "A wireless technology standard for short-range data exchange between devices using radio signals",
-      "answer": "bluetooth"
+      "answer": "bluetooth",
+      "reference_url": "https://www.bluetooth.com/learn-about-bluetooth/tech-overview/",
+      "image_url": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=800&q=80"
     },
     {
       "clue": "The process of loading an operating system into a computer's memory upon startup or restart",
-      "answer": "boot"
+      "answer": "boot",
+      "reference_url": "https://www.geeksforgeeks.org/booting-and-dual-booting-of-operating-system/",
+      "image_url": "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80"
     },
     {
       "clue": "A high-speed always-on internet connection using multiple channels to transmit data simultaneously",
-      "answer": "broadband"
+      "answer": "broadband",
+      "reference_url": "https://www.fcc.gov/general/types-broadband-connections",
+      "image_url": "https://images.unsplash.com/photo-1606904825846-647eb58c2e5c?w=800&q=80"
     },
     {
       "clue": "A software application used to access and navigate websites on the internet",
-      "answer": "browser"
+      "answer": "browser",
+      "reference_url": "https://developer.mozilla.org/en-US/docs/Glossary/Browser",
+      "image_url": "https://images.unsplash.com/photo-1592659762303-90081d34b277?w=800&q=80"
     },
     {
       "clue": "An error, flaw or fault in software or hardware that causes it to produce incorrect or unexpected results",
-      "answer": "bug"
+      "answer": "bug",
+      "reference_url": "https://www.computerhistory.org/tdih/september/9/",
+      "image_url": "https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=800&q=80"
     },
     {
       "clue": "A communication system within a computer that transfers data between components like CPU and memory",
-      "answer": "bus"
+      "answer": "bus",
+      "reference_url": "https://www.geeksforgeeks.org/what-is-bus-in-computer-architecture/",
+      "image_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80"
     },
     {
       "clue": "A unit of digital information consisting of 8 bits, capable of encoding 256 values",
-      "answer": "byte"
+      "answer": "byte",
+      "reference_url": "https://web.stanford.edu/class/cs101/bits-bytes.html",
+      "image_url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80"
     }
   ],
   "C": [
     {
       "clue": "Hardware or software component that temporarily stores data so future requests for that data can be served faster",
-      "answer": "cache"
+      "answer": "cache",
+      "reference_url": "https://aws.amazon.com/caching/",
+      "image_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
     },
     {
       "clue": "A toggle key on keyboards that, when activated, causes letters to be typed in uppercase until pressed again",
-      "answer": "caps-lock"
+      "answer": "caps-lock",
+      "reference_url": "https://www.computerhope.com/jargon/c/capslock.htm",
+      "image_url": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&q=80"
     },
     {
       "clue": "A challenge-response test used to determine whether the user is human, helping prevent automated bots",
-      "answer": "captcha"
+      "answer": "captcha",
+      "reference_url": "https://www.google.com/recaptcha/about/",
+      "image_url": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80"
     },
     {
       "clue": "Software that accesses services provided by a server over a network",
-      "answer": "client"
+      "answer": "client",
+      "reference_url": "https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview",
+      "image_url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
     },
     {
       "clue": "A temporary storage area in memory used to hold data that has been copied or cut, allowing it to be pasted elsewhere",
-      "answer": "clipboard"
+      "answer": "clipboard",
+      "reference_url": "https://docs.microsoft.com/en-us/windows/win32/dataxchg/clipboard",
+      "image_url": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80"
     },
     {
       "clue": "Delivery of computing services—like servers, storage, and software—over the internet on a pay-as-you-go basis",
-      "answer": "cloud-computing"
+      "answer": "cloud-computing",
+      "reference_url": "https://aws.amazon.com/what-is-cloud-computing/",
+      "image_url": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80"
     },
     {
       "clue": "An instruction entered by a user to direct a computer or software program to perform a specific task",
-      "answer": "command"
+      "answer": "command",
+      "reference_url": "https://www.gnu.org/software/bash/manual/html_node/What-is-a-shell_003f.html",
+      "image_url": "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80"
     },
     {
       "clue": "The act of running source code through a compiler to produce executable or machine code",
-      "answer": "compile"
+      "answer": "compile",
+      "reference_url": "https://gcc.gnu.org/onlinedocs/gcc/",
+      "image_url": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=80"
     },
     {
       "clue": "A program that translates high-level source code into low-level machine code, bytecode, or another language",
-      "answer": "compiler"
+      "answer": "compiler",
+      "reference_url": "https://www.geeksforgeeks.org/introduction-of-compiler-design/",
+      "image_url": "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&q=80"
     },
     {
       "clue": "Process of reducing the size of data for storage or transmission by encoding it more efficiently",
-      "answer": "compression"
+      "answer": "compression",
+      "reference_url": "https://www.techopedia.com/definition/728/data-compression",
+      "image_url": "https://images.unsplash.com/photo-1544396821-4dd40b938ad3?w=800&q=80"
     },
     {
       "clue": "An electronic machine designed to process data according to a set of instructions, capable of running software",
-      "answer": "computer"
+      "answer": "computer",
+      "reference_url": "https://www.computerhistory.org/timeline/computers/",
+      "image_url": "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=800&q=80"
     },
     {
       "clue": "A small piece of data sent by a website to a browser to remember information about a user's session",
-      "answer": "cookie"
+      "answer": "cookie",
+      "reference_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies",
+      "image_url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
     },
     {
       "clue": "Practice of protecting systems, networks, and programs from digital attacks",
-      "answer": "cybersecurity"
+      "answer": "cybersecurity",
+      "reference_url": "https://www.cisa.gov/topics/cybersecurity-best-practices",
+      "image_url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80"
     },
     {
       "clue": "Illegal activity involving computers or networks, such as hacking, identity theft, or distributing malware",
-      "answer": "cyber-crime"
+      "answer": "cyber-crime",
+      "reference_url": "https://www.fbi.gov/investigate/cyber",
+      "image_url": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80"
     }
   ],
   "D": [
     {
       "clue": "A background process that runs independently of user control, often providing services to other programs",
-      "answer": "daemon"
+      "answer": "daemon",
+      "reference_url": "https://www.redhat.com/sysadmin/what-is-a-daemon",
+      "image_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
     },
     {
       "clue": "A graphical interface in computing that provides at-a-glance views of key metrics and data in one place",
-      "answer": "dashboard"
+      "answer": "dashboard",
+      "reference_url": "https://www.tableau.com/learn/articles/dashboards",
+      "image_url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
     },
     {
       "clue": "Raw facts or symbols that computers can process, like numbers, text, or observations",
-      "answer": "data"
+      "answer": "data",
+      "reference_url": "https://www.techtarget.com/searchdatamanagement/definition/data",
+      "image_url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
     },
     {
       "clue": "The process of analyzing large datasets to identify patterns and extract useful insights",
-      "answer": "data-mining"
+      "answer": "data-mining",
+      "reference_url": "https://www.ibm.com/topics/data-mining",
+      "image_url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
     },
     {
       "clue": "An organized collection of structured information stored electronically, managed via a DBMS",
-      "answer": "database"
+      "answer": "database",
+      "reference_url": "https://www.oracle.com/database/what-is-database/",
+      "image_url": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&q=80"
     },
     {
       "clue": "The systematic process of detecting, isolating, and fixing errors in software",
-      "answer": "debug"
+      "answer": "debug",
+      "reference_url": "https://code.visualstudio.com/docs/editor/debugging",
+      "image_url": "https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=800&q=80"
     },
     {
       "clue": "To restore a compressed file or data back to its original size or form",
-      "answer": "decompress"
+      "answer": "decompress",
+      "reference_url": "https://www.gnu.org/software/gzip/manual/gzip.html",
+      "image_url": "https://images.unsplash.com/photo-1544396821-4dd40b938ad3?w=800&q=80"
     },
     {
       "clue": "To remove data from a storage medium or file system",
-      "answer": "delete"
+      "answer": "delete",
+      "reference_url": "https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/del",
+      "image_url": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80"
     },
     {
       "clue": "A personal computer designed for individual use, featuring a graphical desktop interface",
-      "answer": "desktop"
+      "answer": "desktop",
+      "reference_url": "https://www.pcmag.com/encyclopedia/term/desktop-computer",
+      "image_url": "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=800&q=80"
     },
     {
       "clue": "Any data represented in discrete, binary form (0 and 1) rather than continuous analog signals",
-      "answer": "digital"
+      "answer": "digital",
+      "reference_url": "https://www.britannica.com/technology/digital-computer",
+      "image_url": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80"
     },
     {
       "clue": "A storage medium where data is written magnetically on spinning platters",
-      "answer": "disk"
+      "answer": "disk",
+      "reference_url": "https://www.seagate.com/products/hard-drives/",
+      "image_url": "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&q=80"
     },
     {
       "clue": "A hierarchical system translating human-readable domain names into IP addresses",
-      "answer": "dns"
+      "answer": "dns",
+      "reference_url": "https://www.cloudflare.com/learning/dns/what-is-dns/",
+      "image_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
     },
     {
       "clue": "A platform that uses OS-level virtualization to deliver software in containers",
-      "answer": "docker"
+      "answer": "docker",
+      "reference_url": "https://docs.docker.com/get-started/overview/",
+      "image_url": "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&q=80"
     },
     {
       "clue": "A digital file that contains text, images, or other data, created for viewing or printing",
-      "answer": "document"
+      "answer": "document",
+      "reference_url": "https://www.techopedia.com/definition/1819/document",
+      "image_url": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80"
     },
     {
       "clue": "The process of receiving files from a remote system to your device",
-      "answer": "download"
+      "answer": "download",
+      "reference_url": "https://www.techopedia.com/definition/1808/download",
+      "image_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
     },
     {
       "clue": "Software that enables an operating system to communicate with hardware devices",
-      "answer": "driver"
+      "answer": "driver",
+      "reference_url": "https://docs.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/what-is-a-driver-",
+      "image_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80"
     },
     {
       "clue": "Digital rights management: technology used to control access to copyrighted digital content",
-      "answer": "drm"
+      "answer": "drm",
+      "reference_url": "https://www.eff.org/issues/drm",
+      "image_url": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80"
     },
     {
       "clue": "Digital Subscriber Line: a broadband communications technology using telephone lines",
-      "answer": "dsl"
+      "answer": "dsl",
+      "reference_url": "https://www.cisco.com/c/en/us/support/docs/broadband-cable/cable-high-speed/12385-DSL-explained.html",
+      "image_url": "https://images.unsplash.com/photo-1606904825846-647eb58c2e5c?w=800&q=80"
     }
   ],
   "E": [
     {
       "clue": "A method of exchanging digital messages between people via computer networks",
-      "answer": "email"
+      "answer": "email",
+      "reference_url": "https://www.rfc-editor.org/rfc/rfc5322",
+      "image_url": "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&q=80"
     },
     {
       "clue": "A small digital pictogram used in electronic communication to convey expression or ideas",
-      "answer": "emoji"
+      "answer": "emoji",
+      "reference_url": "https://unicode.org/emoji/",
+      "image_url": "https://images.unsplash.com/photo-1551817958-11e0f7bbea0b?w=800&q=80"
     },
     {
       "clue": "Software or hardware that imitates another computer system so programs designed for it can run",
-      "answer": "emulator"
+      "answer": "emulator",
+      "reference_url": "https://www.techopedia.com/definition/3293/emulator",
+      "image_url": "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=800&q=80"
     },
     {
       "clue": "The process of transforming information into a coded form so only authorized parties can access it",
-      "answer": "encryption"
+      "answer": "encryption",
+      "reference_url": "https://www.cloudflare.com/learning/ssl/what-is-encryption/",
+      "image_url": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80"
     },
     {
       "clue": "Enterprise Resource Planning: integrated software for managing core business processes across departments",
-      "answer": "erp"
+      "answer": "erp",
+      "reference_url": "https://www.sap.com/products/erp/what-is-erp.html",
+      "image_url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
     },
     {
       "clue": "A widely used wired networking technology for connecting devices in LANs",
-      "answer": "ethernet"
+      "answer": "ethernet",
+      "reference_url": "https://www.ieee802.org/3/",
+      "image_url": "https://images.unsplash.com/photo-1606904825846-647eb58c2e5c?w=800&q=80"
     },
     {
       "clue": "A unit of digital information equal to one quintillion bytes (10¹⁸ bytes)",
-      "answer": "exabyte"
+      "answer": "exabyte",
+      "reference_url": "https://www.techtarget.com/searchstorage/definition/exabyte",
+      "image_url": "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&q=80"
     },
     {
       "clue": "A file containing machine code that can be directly run by a computer's operating system",
-      "answer": "executable"
+      "answer": "executable",
+      "reference_url": "https://en.wikipedia.org/wiki/Executable",
+      "image_url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80"
     }
   ],
   "F": [
     {
       "clue": "Frequently Asked Questions: a list of common questions and answers on a specific topic",
-      "answer": "faq"
+      "answer": "faq",
+      "reference_url": "https://www.rfc-editor.org/rfc/rfc1983",
+      "image_url": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80"
     },
     {
       "clue": "A named collection of data stored on a computer system, such as a document, image, or program",
-      "answer": "file"
+      "answer": "file",
+      "reference_url": "https://www.gnu.org/software/libc/manual/html_node/File-System-Interface.html",
+      "image_url": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80"
     },
     {
       "clue": "A network security system that monitors and controls incoming and outgoing network traffic based on rules",
-      "answer": "firewall"
+      "answer": "firewall",
+      "reference_url": "https://www.cisco.com/c/en/us/products/security/firewalls/what-is-a-firewall.html",
+      "image_url": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80"
     },
     {
       "clue": "Permanent software programmed into a hardware device's read-only memory, controlling its basic functions",
-      "answer": "firmware"
+      "answer": "firmware",
+      "reference_url": "https://www.techtarget.com/whatis/definition/firmware",
+      "image_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80"
     },
     {
       "clue": "A magnetic storage medium that uses rotating disks to hold digital data, popular before USB drives",
-      "answer": "floppy-disk"
+      "answer": "floppy-disk",
+      "reference_url": "https://www.computerhistory.org/revolution/memory-storage/8/254",
+      "image_url": "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&q=80"
     },
     {
       "clue": "A reusable set of libraries or tools that provides structure and common functionality to build software applications",
-      "answer": "framework"
+      "answer": "framework",
+      "reference_url": "https://www.techopedia.com/definition/14384/framework-software",
+      "image_url": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=80"
     },
     {
       "clue": "Software that is provided to users free of charge, often with limited features or without source code",
-      "answer": "freeware"
+      "answer": "freeware",
+      "reference_url": "https://www.techopedia.com/definition/4044/freeware",
+      "image_url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80"
     },
     {
       "clue": "File Transfer Protocol: a standard network protocol used to transfer files between client and server",
-      "answer": "ftp"
+      "answer": "ftp",
+      "reference_url": "https://www.rfc-editor.org/rfc/rfc959",
+      "image_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
     }
   ],
   "G": [
     {
       "clue": "Graphics Interchange Format: a bitmap image format that supports animation and transparency",
-      "answer": "gif"
+      "answer": "gif",
+      "reference_url": "https://www.w3.org/Graphics/GIF/spec-gif89a.txt",
+      "image_url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80"
     },
     {
       "clue": "A unit of digital information equal to one billion bytes (10⁹ bytes)",
-      "answer": "gigabyte"
+      "answer": "gigabyte",
+      "reference_url": "https://www.techtarget.com/searchstorage/definition/gigabyte",
+      "image_url": "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&q=80"
     },
     {
       "clue": "A distributed version control system commonly used for tracking changes in source code during development",
-      "answer": "git"
+      "answer": "git",
+      "reference_url": "https://git-scm.com/doc",
+      "image_url": "https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=800&q=80"
     },
     {
       "clue": "Global Positioning System: a satellite-based navigation system providing location and time information",
-      "answer": "gps"
+      "answer": "gps",
+      "reference_url": "https://www.gps.gov/systems/gps/",
+      "image_url": "https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?w=800&q=80"
     },
     {
       "clue": "Visual elements on a screen such as images, shapes, and text used to present information or create interfaces",
-      "answer": "graphics"
+      "answer": "graphics",
+      "reference_url": "https://www.khronos.org/opengl/",
+      "image_url": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80"
     },
     {
       "clue": "Graphical User Interface: a type of interface that allows users to interact with software visually using icons and windows",
-      "answer": "gui"
+      "answer": "gui",
+      "reference_url": "https://www.interaction-design.org/literature/topics/graphical-user-interfaces",
+      "image_url": "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80"
     }
   ],
   "H": [
     {
       "clue": "To gain unauthorized access to computer systems or networks, often by exploiting vulnerabilities",
-      "answer": "hack"
+      "answer": "hack",
+      "reference_url": "https://www.cisa.gov/news-events/news/understanding-denial-service-attacks",
+      "image_url": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80"
     },
     {
       "clue": "A person skilled in computing and networking who may use this knowledge to solve problems or exploit systems",
-      "answer": "hacker"
+      "answer": "hacker",
+      "reference_url": "https://www.techopedia.com/definition/26361/hacker",
+      "image_url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80"
     },
     {
       "clue": "The physical components of a computer system like CPU, RAM, motherboard, and peripherals",
-      "answer": "hardware"
+      "answer": "hardware",
+      "reference_url": "https://www.britannica.com/technology/computer-hardware",
+      "image_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80"
     },
     {
       "clue": "A high-definition interface standard for transmitting uncompressed video and audio between devices",
-      "answer": "hdmi"
+      "answer": "hdmi",
+      "reference_url": "https://www.hdmi.org/spec/index",
+      "image_url": "https://images.unsplash.com/photo-1606904825846-647eb58c2e5c?w=800&q=80"
     },
     {
       "clue": "The standard markup language for creating and structuring web pages",
-      "answer": "html"
+      "answer": "html",
+      "reference_url": "https://html.spec.whatwg.org/",
+      "image_url": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=80"
     },
     {
       "clue": "A link in a document or on a web page that leads to another location when clicked",
-      "answer": "hyperlink"
+      "answer": "hyperlink",
+      "reference_url": "https://www.w3.org/WhatIs.html",
+      "image_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
     },
     {
       "clue": "Text displayed on a web page that contains clickable links, forming a non-linear structure",
-      "answer": "hypertext"
+      "answer": "hypertext",
+      "reference_url": "https://www.w3.org/WhatIs.html",
+      "image_url": "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&q=80"
     }
   ],
   "I": [
     {
       "clue": "A small image or symbol used in user interfaces to represent actions, files, or programs",
-      "answer": "icon"
+      "answer": "icon",
+      "reference_url": "https://developer.mozilla.org/en-US/docs/Glossary/Icon",
+      "image_url": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80"
     },
     {
       "clue": "Institute of Electrical and Electronics Engineers: a global association that sets technical standards",
-      "answer": "ieee"
+      "answer": "ieee",
+      "reference_url": "https://www.ieee.org/",
+      "image_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
     },
     {
       "clue": "A whole number (no fractions) that can be positive, negative, or zero",
-      "answer": "integer"
+      "answer": "integer",
+      "reference_url": "https://www.geeksforgeeks.org/integer-data-type/",
+      "image_url": "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&q=80"
     },
     {
       "clue": "A shared boundary between two systems or components that enables them to communicate",
-      "answer": "interface"
+      "answer": "interface",
+      "reference_url": "https://www.geeksforgeeks.org/interfaces-in-java/",
+      "image_url": "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80"
     },
     {
       "clue": "The global network that connects computers and devices worldwide using standard protocols",
-      "answer": "internet"
+      "answer": "internet",
+      "reference_url": "https://www.internetsociety.org/internet/what-is-the-internet/",
+      "image_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
     },
     {
       "clue": "Apple's mobile operating system designed for iPhone, iPad, and iPod Touch devices",
-      "answer": "ios"
+      "answer": "ios",
+      "reference_url": "https://developer.apple.com/ios/",
+      "image_url": "https://images.unsplash.com/photo-1611557381834-e6322301eb3d?w=800&q=80"
     },
     {
       "clue": "A unique numerical label assigned to each device connected to a computer network that uses the Internet Protocol",
-      "answer": "ip-address"
+      "answer": "ip-address",
+      "reference_url": "https://www.rfc-editor.org/rfc/rfc791",
+      "image_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
     },
     {
       "clue": "The act of repeating a sequence of instructions or steps in a program, typically using loops",
-      "answer": "iteration"
+      "answer": "iteration",
+      "reference_url": "https://www.geeksforgeeks.org/loops-in-programming/",
+      "image_url": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80"
     }
   ],
   "J": [
     {
       "clue": "A widely used, platform-independent programming language known for its portability",
-      "answer": "java"
+      "answer": "java",
+      "reference_url": "https://docs.oracle.com/en/java/",
+      "image_url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80"
     },
     {
       "clue": "A scripting language primarily used to create and manage dynamic content on websites",
-      "answer": "javascript"
+      "answer": "javascript",
+      "reference_url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+      "image_url": "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=800&q=80"
     },
     {
       "clue": "A handheld input device used to control movement in games and simulations",
-      "answer": "joystick"
+      "answer": "joystick",
+      "reference_url": "https://www.techopedia.com/definition/2251/joystick",
+      "image_url": "https://images.unsplash.com/photo-1592155931584-901ac15763e3?w=800&q=80"
     },
     {
       "clue": "A commonly used image format that compresses photographic content efficiently",
-      "answer": "jpeg"
+      "answer": "jpeg",
+      "reference_url": "https://jpeg.org/jpeg/",
+      "image_url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80"
     },
     {
       "clue": "Unwanted, unsolicited email messages sent in bulk, often for advertising or phishing",
-      "answer": "junk-mail"
+      "answer": "junk-mail",
+      "reference_url": "https://www.ftc.gov/news-events/topics/consumer-protection/spam",
+      "image_url": "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&q=80"
     }
   ],
   "K": [
     {
       "clue": "The central core of an operating system that controls hardware, manages processes, memory, and facilitates communication between software and devices",
-      "answer": "kernel"
+      "answer": "kernel",
+      "reference_url": "https://www.kernel.org/doc/html/latest/",
+      "image_url": "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80"
     },
     {
       "clue": "A physical or virtual key used to encrypt/decrypt data or unlock functionality",
-      "answer": "key"
+      "answer": "key",
+      "reference_url": "https://www.cloudflare.com/learning/ssl/what-is-a-cryptographic-key/",
+      "image_url": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80"
     },
     {
       "clue": "The set of keys with letters, numbers, and symbols used to input data into a computer",
-      "answer": "keyboard"
+      "answer": "keyboard",
+      "reference_url": "https://www.computerhope.com/jargon/k/keyboard.htm",
+      "image_url": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&q=80"
     },
     {
       "clue": "A significant word or phrase used to categorize or trigger a function in programming or search",
-      "answer": "keyword"
+      "answer": "keyword",
+      "reference_url": "https://www.geeksforgeeks.org/keywords-in-programming/",
+      "image_url": "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&q=80"
     }
   ],
   "L": [
     {
       "clue": "Local Area Network: a network connecting devices within a limited area like a home or office",
-      "answer": "lan"
+      "answer": "lan",
+      "reference_url": "https://www.cisco.com/c/en/us/products/switches/what-is-a-lan-local-area-network.html",
+      "image_url": "https://images.unsplash.com/photo-1606904825846-647eb58c2e5c?w=800&q=80"
     },
     {
       "clue": "A portable personal computer with integrated screen, keyboard, and battery",
-      "answer": "laptop"
+      "answer": "laptop",
+      "reference_url": "https://www.britannica.com/technology/laptop-computer",
+      "image_url": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&q=80"
     },
     {
       "clue": "A printer that uses a laser and electrically charged toner to produce high-quality text and graphics",
-      "answer": "laser-printer"
+      "answer": "laser-printer",
+      "reference_url": "https://www.hp.com/us-en/shop/tech-takes/how-does-laser-printer-work",
+      "image_url": "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=800&q=80"
     },
     {
       "clue": "A reference or pointer, usually clickable, that connects one document or location to another",
-      "answer": "link"
+      "answer": "link",
+      "reference_url": "https://www.w3.org/TR/html52/links.html",
+      "image_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
     },
     {
       "clue": "An open-source Unix-like operating system kernel created by Linus Torvalds and community contributors",
-      "answer": "linux"
+      "answer": "linux",
+      "reference_url": "https://www.kernel.org/",
+      "image_url": "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80"
     },
     {
       "clue": "The use of reasoning principles to perform computation or solve problems in software",
-      "answer": "logic"
+      "answer": "logic",
+      "reference_url": "https://plato.stanford.edu/entries/logic-programming/",
+      "image_url": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80"
     },
     {
       "clue": "A wireless communication standard for high-speed data over mobile networks",
-      "answer": "lte"
+      "answer": "lte",
+      "reference_url": "https://www.3gpp.org/technologies/lte",
+      "image_url": "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&q=80"
     }
   ],
   "M": [
     {
       "clue": "A family of personal computers designed and sold by Apple in the 1980s and '90s",
-      "answer": "macintosh"
+      "answer": "macintosh",
+      "reference_url": "https://www.apple.com/mac/",
+      "image_url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80"
     },
     {
       "clue": "A set of instructions that automate tasks in programs like spreadsheets or Word macros",
-      "answer": "macro"
+      "answer": "macro",
+      "reference_url": "https://support.microsoft.com/en-us/office/create-or-run-a-macro-c6b99036-905c-49a6-818a-dfb98b7c3c9c",
+      "image_url": "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&q=80"
     },
     {
       "clue": "A large, powerful computer used primarily by large organizations for bulk data processing",
-      "answer": "mainframe"
+      "answer": "mainframe",
+      "reference_url": "https://www.ibm.com/topics/mainframe",
+      "image_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
     },
     {
       "clue": "Malicious software designed to harm or exploit computer systems",
-      "answer": "malware"
+      "answer": "malware",
+      "reference_url": "https://www.cisa.gov/news-events/news/understanding-denial-service-attacks",
+      "image_url": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80"
     },
     {
       "clue": "The physical hardware in a computer used to store data temporarily or permanently, like RAM or hard drives",
-      "answer": "memory"
+      "answer": "memory",
+      "reference_url": "https://www.geeksforgeeks.org/computer-memory/",
+      "image_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80"
     },
     {
       "clue": "A device that modulates and demodulates signals for data transmission over telephone or cable lines",
-      "answer": "modem"
+      "answer": "modem",
+      "reference_url": "https://www.cisco.com/c/en/us/support/docs/broadband-cable/cable-modems/12251-cablemodem-12251.html",
+      "image_url": "https://images.unsplash.com/photo-1606904825846-647eb58c2e5c?w=800&q=80"
     },
     {
       "clue": "An output device that displays visual information on a screen, like text, images, or video",
-      "answer": "monitor"
+      "answer": "monitor",
+      "reference_url": "https://www.techopedia.com/definition/1966/monitor",
+      "image_url": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&q=80"
     },
     {
       "clue": "The main printed circuit board in a computer which houses the CPU, memory, and important connectors",
-      "answer": "motherboard"
+      "answer": "motherboard",
+      "reference_url": "https://www.intel.com/content/www/us/en/support/articles/000005628/boards-and-kits.html",
+      "image_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80"
     },
     {
       "clue": "A standard for encoding video and audio, commonly used for DVDs and online streaming",
-      "answer": "mpeg"
+      "answer": "mpeg",
+      "reference_url": "https://mpeg.chiariglione.org/",
+      "image_url": "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&q=80"
     },
     {
       "clue": "The combination of text, images, video, and audio in a single presentation or application",
-      "answer": "multimedia"
+      "answer": "multimedia",
+      "reference_url": "https://www.techopedia.com/definition/947/multimedia",
+      "image_url": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80"
     }
   ],
   "N": [
     {
       "clue": "A network of interconnected devices that share data and resources",
-      "answer": "network"
+      "answer": "network",
+      "reference_url": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/what-is-computer-networking.html",
+      "image_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
     },
     {
       "clue": "A single computing device or system connected to a network",
-      "answer": "node"
+      "answer": "node",
+      "reference_url": "https://www.geeksforgeeks.org/what-is-a-node-in-computer-network/",
+      "image_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
     },
     {
       "clue": "A portable computer similar to a laptop but even more compact",
-      "answer": "notebook"
+      "answer": "notebook",
+      "reference_url": "https://www.britannica.com/technology/laptop-computer",
+      "image_url": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&q=80"
     }
   ],
   "O": [
     {
       "clue": "Optical Character Recognition: technology that converts different types of documents into editable and searchable data",
-      "answer": "ocr"
+      "answer": "ocr",
+      "reference_url": "https://www.adobe.com/acrobat/hub/what-is-ocr.html",
+      "image_url": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80"
     },
     {
       "clue": "Software whose source code is available for anyone to view, modify, and distribute",
-      "answer": "open-source"
+      "answer": "open-source",
+      "reference_url": "https://opensource.org/osd",
+      "image_url": "https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=800&q=80"
     },
     {
       "clue": "A selectable choice in a program or menu that enables users to customize actions or features",
-      "answer": "option"
+      "answer": "option",
+      "reference_url": "https://www.techopedia.com/definition/24306/option",
+      "image_url": "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80"
     },
     {
       "clue": "The result produced by a computer program after processing input data",
-      "answer": "output"
+      "answer": "output",
+      "reference_url": "https://www.geeksforgeeks.org/input-and-output-in-programming/",
+      "image_url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
     }
   ],
   "P": [
     {
       "clue": "A secret string of characters used to authenticate a user and authorize access to systems or data",
-      "answer": "password"
+      "answer": "password",
+      "reference_url": "https://www.cisa.gov/secure-our-world/use-strong-passwords",
+      "image_url": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80"
     },
     {
       "clue": "To insert previously copied or cut content from the clipboard into a document or field",
-      "answer": "paste"
+      "answer": "paste",
+      "reference_url": "https://docs.microsoft.com/en-us/windows/win32/dataxchg/clipboard",
+      "image_url": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80"
     },
     {
       "clue": "A type of cyber attack that uses deceptive communications to trick people into revealing sensitive information",
-      "answer": "phishing"
+      "answer": "phishing",
+      "reference_url": "https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks",
+      "image_url": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80"
     },
     {
       "clue": "A base set of technologies or tools on which applications are built and run, like mobile or cloud platforms",
-      "answer": "platform"
+      "answer": "platform",
+      "reference_url": "https://www.techopedia.com/definition/3411/platform",
+      "image_url": "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80"
     },
     {
       "clue": "A software component that adds specific capabilities or features to an existing application",
-      "answer": "plug-in"
+      "answer": "plug-in",
+      "reference_url": "https://developer.mozilla.org/en-US/docs/Glossary/Plugin",
+      "image_url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80"
     },
     {
       "clue": "A website or gateway that provides access to a variety of services or information in one place",
-      "answer": "portal"
+      "answer": "portal",
+      "reference_url": "https://www.techopedia.com/definition/4951/web-portal",
+      "image_url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
     },
     {
       "clue": "The central unit in a computer that executes instructions and processes data",
-      "answer": "processor"
+      "answer": "processor",
+      "reference_url": "https://www.intel.com/content/www/us/en/products/docs/processors/what-is-a-processor.html",
+      "image_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80"
     },
     {
       "clue": "Defined rules and formats that enable two or more devices or programs to communicate",
-      "answer": "protocol"
+      "answer": "protocol",
+      "reference_url": "https://www.cloudflare.com/learning/network-layer/what-is-a-protocol/",
+      "image_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
     },
     {
       "clue": "A high-level, interpreted programming language known for its ease of use and readability",
-      "answer": "python"
+      "answer": "python",
+      "reference_url": "https://www.python.org/doc/",
+      "image_url": "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=800&q=80"
     }
   ],
   "Q": [
     {
       "clue": "A two-dimensional barcode that stores information which can be scanned by devices like smartphones",
-      "answer": "qr-code"
+      "answer": "qr-code",
+      "reference_url": "https://www.qrcode.com/en/about/",
+      "image_url": "https://images.unsplash.com/photo-1606166325683-7e52d1854d5f?w=800&q=80"
     },
     {
       "clue": "Computing that uses quantum-mechanical phenomena like superposition and entanglement to perform operations",
-      "answer": "quantum-computing"
+      "answer": "quantum-computing",
+      "reference_url": "https://www.ibm.com/topics/quantum-computing",
+      "image_url": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80"
     },
     {
       "clue": "A data structure in which elements wait in line for processing, following First-In-First-Out order",
-      "answer": "queue"
+      "answer": "queue",
+      "reference_url": "https://www.geeksforgeeks.org/queue-data-structure/",
+      "image_url": "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&q=80"
     },
     {
       "clue": "The standard keyboard layout for Latin alphabet typewriters and PCs, named from its first six letters",
-      "answer": "qwerty"
+      "answer": "qwerty",
+      "reference_url": "https://www.smithsonianmag.com/arts-culture/fact-of-fiction-the-legend-of-the-qwerty-keyboard-49863249/",
+      "image_url": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&q=80"
     }
   ],
   "R": [
     {
       "clue": "Volatile memory that can be accessed randomly and is used by the CPU to store temporary data",
-      "answer": "ram"
+      "answer": "ram",
+      "reference_url": "https://www.crucial.com/articles/about-memory/support-what-is-computer-memory",
+      "image_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80"
     },
     {
       "clue": "The process of restarting a computer by shutting down and starting it again",
-      "answer": "reboot"
+      "answer": "reboot",
+      "reference_url": "https://www.computerhope.com/jargon/r/reboot.htm",
+      "image_url": "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=800&q=80"
     },
     {
       "clue": "A system database in Windows that stores low-level settings for the OS and installed applications",
-      "answer": "registry"
+      "answer": "registry",
+      "reference_url": "https://docs.microsoft.com/en-us/windows/win32/sysinfo/registry",
+      "image_url": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80"
     },
     {
       "clue": "Accessing a computer or network from a remote location, often over the internet",
-      "answer": "remote-access"
+      "answer": "remote-access",
+      "reference_url": "https://www.cisco.com/c/en/us/products/security/what-is-remote-access.html",
+      "image_url": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&q=80"
     },
     {
       "clue": "Read-Only Memory: non-volatile memory containing essential system firmware or BIOS",
-      "answer": "rom"
+      "answer": "rom",
+      "reference_url": "https://www.geeksforgeeks.org/read-only-memory-rom-in-computer/",
+      "image_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80"
     },
     {
       "clue": "Gaining privileged control of a device, often by exploiting security vulnerabilities",
-      "answer": "rooting"
+      "answer": "rooting",
+      "reference_url": "https://www.androidauthority.com/root-android-277350/",
+      "image_url": "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=800&q=80"
     }
   ],
   "S": [
     {
       "clue": "A special startup mode where only essential system components are loaded to diagnose issues",
-      "answer": "safe-mode"
+      "answer": "safe-mode",
+      "reference_url": "https://support.microsoft.com/en-us/windows/start-your-pc-in-safe-mode-in-windows-92c27cff-db89-8644-1ce4-b3e5e56fe234",
+      "image_url": "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80"
     },
     {
       "clue": "A computer or program that provides services or resources to other computers, known as clients",
-      "answer": "server"
+      "answer": "server",
+      "reference_url": "https://www.cloudflare.com/learning/cdn/glossary/origin-server/",
+      "image_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
     },
     {
       "clue": "Computer programs that perform specific tasks on a device, as opposed to hardware or firmware",
-      "answer": "software"
+      "answer": "software",
+      "reference_url": "https://www.britannica.com/technology/software",
+      "image_url": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=80"
     },
     {
       "clue": "Unsolicited and often unwanted email, typically sent in bulk for advertising or malicious purposes",
-      "answer": "spam"
+      "answer": "spam",
+      "reference_url": "https://www.ftc.gov/news-events/topics/consumer-protection/spam",
+      "image_url": "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&q=80"
     },
     {
       "clue": "Structured Query Language: a standard programming language for managing and querying relational databases",
-      "answer": "sql"
+      "answer": "sql",
+      "reference_url": "https://www.iso.org/standard/63555.html",
+      "image_url": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&q=80"
     },
     {
       "clue": "Solid-State Drive: a storage device that uses flash memory and has no moving parts",
-      "answer": "ssd"
+      "answer": "ssd",
+      "reference_url": "https://www.crucial.com/articles/about-ssd/why-use-ssd",
+      "image_url": "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&q=80"
     },
     {
       "clue": "Service Set Identifier: the name assigned to a Wi-Fi network to uniquely identify it",
-      "answer": "ssid"
+      "answer": "ssid",
+      "reference_url": "https://www.cisco.com/c/en/us/support/docs/wireless-mobility/wireless-lan-wlan/27072-ssid-bssid.html",
+      "image_url": "https://images.unsplash.com/photo-1606904825846-647eb58c2e5c?w=800&q=80"
     },
     {
       "clue": "Secure Sockets Layer: an encryption protocol that ensures privacy and integrity of data transmitted over networks",
-      "answer": "ssl"
+      "answer": "ssl",
+      "reference_url": "https://www.cloudflare.com/learning/ssl/what-is-ssl/",
+      "image_url": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80"
     },
     {
       "clue": "Scalable Vector Graphics: an XML-based format for two-dimensional vector images",
-      "answer": "svg"
+      "answer": "svg",
+      "reference_url": "https://www.w3.org/Graphics/SVG/",
+      "image_url": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80"
     }
   ],
   "T": [
     {
       "clue": "A predefined file used as a starting point for creating new documents, designs, or code",
-      "answer": "template"
+      "answer": "template",
+      "reference_url": "https://www.techopedia.com/definition/5317/template",
+      "image_url": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80"
     },
     {
       "clue": "A sequence of instructions within a process that can be scheduled independently by the OS",
-      "answer": "thread"
+      "answer": "thread",
+      "reference_url": "https://www.geeksforgeeks.org/thread-in-operating-system/",
+      "image_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
     },
     {
       "clue": "The creation and management of threads within a process to allow parallel execution",
-      "answer": "threading"
+      "answer": "threading",
+      "reference_url": "https://docs.python.org/3/library/threading.html",
+      "image_url": "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&q=80"
     },
     {
       "clue": "Temporary storage for deleted files, allowing recovery before permanent removal",
-      "answer": "trash"
+      "answer": "trash",
+      "reference_url": "https://support.apple.com/guide/mac-help/trash-mh35835/mac",
+      "image_url": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80"
     }
   ],
   "U": [
     {
       "clue": "Running a processor at a clock speed lower than its default to reduce heat or power use",
-      "answer": "underclock"
+      "answer": "underclock",
+      "reference_url": "https://www.techopedia.com/definition/8487/underclocking",
+      "image_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80"
     },
     {
       "clue": "A family of multitasking, multi-user operating systems originating from AT&T's original in 1969",
-      "answer": "unix"
+      "answer": "unix",
+      "reference_url": "https://www.opengroup.org/membership/forums/platform/unix",
+      "image_url": "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80"
     },
     {
       "clue": "Uniform Resource Locator: the web address used to locate and access resources on the Internet",
-      "answer": "url"
+      "answer": "url",
+      "reference_url": "https://www.w3.org/Addressing/URL/url-spec.txt",
+      "image_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
     },
     {
       "clue": "Universal Serial Bus: a standard interface for data and power between computers and peripherals",
-      "answer": "usb"
+      "answer": "usb",
+      "reference_url": "https://www.usb.org/documents",
+      "image_url": "https://images.unsplash.com/photo-1625948515291-69613efd103f?w=800&q=80"
     }
   ],
   "V": [
     {
       "clue": "Computer graphics composed of geometric shapes—points, lines, and curves—that can scale without loss",
-      "answer": "vector-graphics"
+      "answer": "vector-graphics",
+      "reference_url": "https://www.adobe.com/creativecloud/file-types/image/vector.html",
+      "image_url": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80"
     },
     {
       "clue": "Video Graphics Array: a legacy display standard introduced by IBM in 1987",
-      "answer": "vga"
+      "answer": "vga",
+      "reference_url": "https://www.vesa.org/vesa-standards/",
+      "image_url": "https://images.unsplash.com/photo-1606904825846-647eb58c2e5c?w=800&q=80"
     },
     {
       "clue": "Real-time audio and video communications between remote participants (video calls/conferencing)",
-      "answer": "video-telephony"
+      "answer": "video-telephony",
+      "reference_url": "https://www.itu.int/rec/T-REC-H.323",
+      "image_url": "https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=800&q=80"
     },
     {
       "clue": "Malicious software that replicates by modifying other programs and spreading to other systems",
-      "answer": "virus"
+      "answer": "virus",
+      "reference_url": "https://www.cisa.gov/news-events/news/understanding-denial-service-attacks",
+      "image_url": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80"
     },
     {
       "clue": "Voice over Internet Protocol: technology for delivering voice communications via IP networks",
-      "answer": "voip"
+      "answer": "voip",
+      "reference_url": "https://www.fcc.gov/general/voice-over-internet-protocol-voip",
+      "image_url": "https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=800&q=80"
     }
   ],
   "W": [
     {
       "clue": "Wide Area Network: a telecommunications network that spans a broad geographic area",
-      "answer": "wan"
+      "answer": "wan",
+      "reference_url": "https://www.cisco.com/c/en/us/products/switches/what-is-a-wan-wide-area-network.html",
+      "image_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
     },
     {
       "clue": "A single document or page on the web that is part of a broader website",
-      "answer": "webpage"
+      "answer": "webpage",
+      "reference_url": "https://www.w3.org/standards/webdesign/htmlcss",
+      "image_url": "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80"
     },
     {
       "clue": "A collection of related web pages, typically under a single domain, accessible via the Internet",
-      "answer": "website"
+      "answer": "website",
+      "reference_url": "https://www.w3.org/standards/webdesign/",
+      "image_url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
     },
     {
       "clue": "A collaborative online encyclopedia that can be edited by its users",
-      "answer": "wiki"
+      "answer": "wiki",
+      "reference_url": "https://www.mediawiki.org/wiki/MediaWiki",
+      "image_url": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80"
     },
     {
       "clue": "A Microsoft operating system featuring a graphical user interface and broad application support",
-      "answer": "windows"
+      "answer": "windows",
+      "reference_url": "https://www.microsoft.com/en-us/windows",
+      "image_url": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80"
     },
     {
       "clue": "A wireless networking technology based on IEEE 802.11 enabling devices to connect without cables",
-      "answer": "wi-fi"
+      "answer": "wi-fi",
+      "reference_url": "https://www.wi-fi.org/",
+      "image_url": "https://images.unsplash.com/photo-1606904825846-647eb58c2e5c?w=800&q=80"
     },
     {
       "clue": "The global system of interlinked hypertext documents accessed via the Internet",
-      "answer": "world-wide-web"
+      "answer": "world-wide-web",
+      "reference_url": "https://www.w3.org/WWW/",
+      "image_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
     }
   ],
   "X": [
     {
       "clue": "eXtensible Markup Language: a flexible format for creating structured data representations",
-      "answer": "xml"
+      "answer": "xml",
+      "reference_url": "https://www.w3.org/XML/",
+      "image_url": "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&q=80"
     }
   ],
   "Y": [
     {
       "clue": "A video platform where users can upload, share, and view videos",
-      "answer": "youtube"
+      "answer": "youtube",
+      "reference_url": "https://www.youtube.com/",
+      "image_url": "https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=800&q=80"
     }
   ],
   "Z": [
     {
       "clue": "An exploit that takes advantage of a software vulnerability before a patch is available",
-      "answer": "zero-day"
+      "answer": "zero-day",
+      "reference_url": "https://www.cisa.gov/news-events/cybersecurity-advisories",
+      "image_url": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80"
     },
     {
       "clue": "A compressed archive file format (e.g., .zip) used to bundle and compress multiple files",
-      "answer": "zip"
+      "answer": "zip",
+      "reference_url": "https://www.pkware.com/zip",
+      "image_url": "https://images.unsplash.com/photo-1544396821-4dd40b938ad3?w=800&q=80"
     }
   ]
 }
